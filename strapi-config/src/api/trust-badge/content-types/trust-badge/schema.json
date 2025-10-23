@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "trust_badges",
+  "info": {
+    "singularName": "trust-badge",
+    "pluralName": "trust-badges",
+    "displayName": "Trust Badge",
+    "description": "信任徽章"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "description": {
+      "type": "string",
+      "required": true,
+      "maxLength": 200
+    },
+    "icon": {
+      "type": "string",
+      "required": true,
+      "maxLength": 50
+    },
+    "link": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "sortOrder": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

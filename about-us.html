@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="了解网络安全评测中心 - 我们的使命、专业团队、测试方法和编辑准则。独立、客观、专业的网络安全产品评测">
+    <title>关于我们 - 专业网络安全评测团队 | 网络安全评测中心</title>
+    <style>
+        :root {
+            --primary-color: #c12026;
+            --secondary-color: #1a1a2e;
+            --accent-color: #0066cc;
+            --text-color: #333;
+            --text-light: #666;
+            --border-color: #e0e0e0;
+            --bg-light: #f8f9fa;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background: #fff;
+        }
+
+        .navbar {
+            background: var(--secondary-color);
+            color: white;
+            padding: var(--spacing-sm) 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-md);
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary-color), #2d3561);
+            color: white;
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: var(--spacing-xl) var(--spacing-md);
+        }
+
+        /* Mission Section */
+        .mission-section {
+            text-align: center;
+            margin: var(--spacing-xl) 0;
+            padding: var(--spacing-xl);
+            background: var(--bg-light);
+            border-radius: 16px;
+        }
+
+        .mission-section h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .mission-section p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Values Grid */
+        .values-section {
+            margin: var(--spacing-xl) 0;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            text-align: center;
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .value-card {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: var(--spacing-lg);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .value-card h3 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.5rem;
+        }
+
+        .value-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Team Section */
+        .team-section {
+            background: var(--bg-light);
+            padding: var(--spacing-xl);
+            border-radius: 16px;
+            margin: var(--spacing-xl) 0;
+        }
+
+        .team-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--spacing-xl);
+        }
+
+        .team-intro h2 {
+            font-size: 2.2rem;
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 12px;
+            padding: var(--spacing-lg);
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .member-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), #d63031);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 0 auto var(--spacing-md);
+            color: white;
+        }
+
+        .member-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .member-role {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .member-bio {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Testing Method Section */
+        .testing-section {
+            margin: var(--spacing-xl) 0;
+        }
+
+        .testing-process {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .process-step {
+            background: white;
+            border-left: 5px solid var(--primary-color);
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .process-step h3 {
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .process-step p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Lab Partners */
+        .partners-section {
+            background: var(--bg-light);
+            padding: var(--spacing-xl);
+            border-radius: 16px;
+            margin: var(--spacing-xl) 0;
+            text-align: center;
+        }
+
+        .partners-section h2 {
+            font-size: 2.2rem;
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .partner-card {
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .partner-card:hover {
+            transform: scale(1.05);
+        }
+
+        .partner-logo {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .partner-name {
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .partner-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Editorial Principles */
+        .principles-section {
+            margin: var(--spacing-xl) 0;
+        }
+
+        .principles-list {
+            list-style: none;
+            max-width: 800px;
+            margin: var(--spacing-lg) auto;
+        }
+
+        .principle-item {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+            position: relative;
+            padding-left: 80px;
+        }
+
+        .principle-number {
+            position: absolute;
+            left: var(--spacing-md);
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .principle-item h3 {
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .principle-item p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Social Proof */
+        .testimonials-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: var(--spacing-xl);
+            border-radius: 16px;
+            margin: var(--spacing-xl) 0;
+        }
+
+        .testimonials-section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: var(--spacing-lg);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .testimonial-quote {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: var(--spacing-md);
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            margin: var(--spacing-xl) 0;
+            padding: var(--spacing-xl);
+            background: linear-gradient(135deg, var(--primary-color), #d63031);
+            border-radius: 16px;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-lg);
+            opacity: 0.95;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-left: var(--spacing-md);
+            transition: background 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary-color);
+            color: white;
+            padding: var(--spacing-xl) 0 var(--spacing-md);
+            margin-top: var(--spacing-xl);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .footer-column h4 {
+            margin-bottom: var(--spacing-md);
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: var(--spacing-md);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .values-grid,
+            .team-grid,
+            .testing-process,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-secondary {
+                margin-left: 0;
+                margin-top: var(--spacing-md);
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="landing-page-v2-anxiety-marketing.html" class="logo">🛡️ 网络安全评测中心</a>
+            <ul class="nav-links">
+                <li><a href="landing-page-v2-anxiety-marketing.html">首页</a></li>
+                <li><a href="about-us.html">关于我们</a></li>
+                <li><a href="contact.html">联系我们</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🛡️ 关于我们</h1>
+            <p>专业、独立、值得信赖的网络安全评测团队</p>
+            <p style="margin-top: var(--spacing-md); font-size: 1.1rem; opacity: 0.85;">
+                我们致力于帮助用户在复杂的网络安全市场中做出明智的选择
+            </p>
+        </div>
+    </section>
+
+    <main class="container">
+        <!-- Team -->
+        <section class="team-section">
+            <div class="team-intro">
+                <h2>👨‍💻 我们的专家团队</h2>
+                <p>我们的团队由网络安全专家、资深编辑和技术测试人员组成，拥有超过50年的累计行业经验。</p>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">👨‍💼</div>
+                    <div class="member-name">张明</div>
+                    <div class="member-role">首席安全分析师</div>
+                    <p class="member-bio">
+                        15年网络安全从业经验，前企业安全架构师。专注于恶意软件防护和威胁检测技术研究。持有CISSP、CEH认证。
+                    </p>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-avatar">👩‍💻</div>
+                    <div class="member-name">李晓</div>
+                    <div class="member-role">高级测试工程师</div>
+                    <p class="member-bio">
+                        10年软件测试经验，精通性能分析和压力测试。负责产品的深度技术评测和基准测试设计。
+                    </p>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-avatar">👨‍🔬</div>
+                    <div class="member-name">王浩</div>
+                    <div class="member-role">主编</div>
+                    <p class="member-bio">
+                        资深科技编辑，12年内容创作经验。专注于将复杂的技术概念转化为易懂的评测内容，帮助用户做出明智决策。
+                    </p>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-avatar">👩‍🎓</div>
+                    <div class="member-name">陈佳</div>
+                    <div class="member-role">用户体验研究员</div>
+                    <p class="member-bio">
+                        人机交互专业背景，8年UX研究经验。负责评估产品的易用性和用户体验，确保推荐真正符合用户需求。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testing Method -->
+        <section class="testing-section">
+            <h2 class="section-title">🔬 我们的测试方法</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto var(--spacing-lg); color: var(--text-light);">
+                我们采用严格的多阶段测试流程，确保评测结果的准确性和可靠性
+            </p>
+
+            <div class="testing-process">
+                <div class="process-step">
+                    <span class="step-number">1</span>
+                    <h3>产品采购</h3>
+                    <p>自费购买正版软件，确保测试环境与普通用户完全一致，不接受厂商提供的测试版本。</p>
+                </div>
+
+                <div class="process-step">
+                    <span class="step-number">2</span>
+                    <h3>基准测试</h3>
+                    <p>在统一的测试环境中运行标准化测试，包括病毒检测率、系统性能影响、扫描速度等42项指标。</p>
+                </div>
+
+                <div class="process-step">
+                    <span class="step-number">3</span>
+                    <h3>真实场景测试</h3>
+                    <p>模拟真实用户使用场景，包括日常办公、游戏、视频编辑等，持续168小时以上的深度体验。</p>
+                </div>
+
+                <div class="process-step">
+                    <span class="step-number">4</span>
+                    <h3>权威数据交叉验证</h3>
+                    <p>对比AV-Test、AV-Comparatives、SE Labs等国际权威实验室的测试结果，确保数据准确性。</p>
+                </div>
+
+                <div class="process-step">
+                    <span class="step-number">5</span>
+                    <h3>用户反馈收集</h3>
+                    <p>分析真实用户评价和反馈，了解产品在实际使用中的优缺点和常见问题。</p>
+                </div>
+
+                <div class="process-step">
+                    <span class="step-number">6</span>
+                    <h3>综合评分与推荐</h3>
+                    <p>基于测试数据、用户反馈和性价比分析，生成客观的评分和针对不同用户群体的推荐。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Editorial Principles -->
+        <section class="principles-section">
+            <h2 class="section-title">📜 我们的编辑准则</h2>
+
+            <ul class="principles-list">
+                <li class="principle-item">
+                    <div class="principle-number">1</div>
+                    <h3>拒绝付费评测</h3>
+                    <p>任何品牌都无法通过付费获得更高评分或推荐位置。我们的评分完全基于测试结果和客观数据。</p>
+                </li>
+
+                <li class="principle-item">
+                    <div class="principle-number">2</div>
+                    <h3>诚实披露缺点</h3>
+                    <p>我们不仅展示产品优点，更会坦诚指出每款产品的局限性和不足，帮助您做出全面的判断。</p>
+                </li>
+
+                <li class="principle-item">
+                    <div class="principle-number">3</div>
+                    <h3>持续更新内容</h3>
+                    <p>网络安全产品快速迭代，我们每季度重新测试主流产品并更新评测内容，确保信息时效性。</p>
+                </li>
+
+                <li class="principle-item">
+                    <div class="principle-number">4</div>
+                    <h3>透明标注联盟关系</h3>
+                    <p>我们清晰标注所有联盟链接和商业关系，让您明确知道哪些链接可能为我们带来收入。</p>
+                </li>
+
+                <li class="principle-item">
+                    <div class="principle-number">5</div>
+                    <h3>用户需求优先</h3>
+                    <p>我们根据不同用户场景（家庭、游戏、性能）提供针对性推荐，而非一刀切的排名。</p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials-section">
+            <h2>💬 用户怎么说</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">
+                        "终于找到了真正客观的评测！对比了三家网站，这里的分析最深入，而且会坦诚告诉你每款软件的缺点。"
+                    </p>
+                    <p class="testimonial-author">— 张先生，IT工程师</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">
+                        "168小时测试真的很用心！帮我省了好多时间，按照推荐买的McAfee，确实适合我的多设备需求。"
+                    </p>
+                    <p class="testimonial-author">— 李女士，企业主</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">
+                        "作为游戏玩家，最怕杀毒软件拖慢电脑。这里的性能对比数据非常详细，帮我选到了TotalAV，玩游戏完全无感。"
+                    </p>
+                    <p class="testimonial-author">— 王同学，游戏爱好者</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <h2>开始您的安全之旅 🚀</h2>
+            <p>让我们帮助您找到最适合的网络安全解决方案</p>
+            <a href="landing-page-v2-anxiety-marketing.html" class="btn-primary">查看产品评测</a>
+            <a href="contact.html" class="btn-secondary">联系我们</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>快速导航</h4>
+                    <ul class="footer-links">
+                        <li><a href="landing-page-v2-anxiety-marketing.html">首页</a></li>
+                        <li><a href="about-us.html">关于我们</a></li>
+                        <li><a href="contact.html">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>法律信息</h4>
+                    <ul class="footer-links">
+                        <li><a href="affiliate-disclosure.html">联盟披露</a></li>
+                        <li><a href="privacy-policy.html">隐私政策</a></li>
+                        <li><a href="terms-of-service.html">使用条款</a></li>
+                        <li><a href="cookie-policy.html">Cookie政策</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>资源中心</h4>
+                    <ul class="footer-links">
+                        <li><a href="#testing-method">测试方法</a></li>
+                        <li><a href="#faq">常见问题</a></li>
+                        <li><a href="#blog">安全博客</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 网络安全评测中心. 保留所有权利.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+                    本网站包含联盟链接。通过推荐链接购买产品我们可能获得佣金。
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

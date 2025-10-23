@@ -1,0 +1,65 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_settings",
+  "info": {
+    "singularName": "site-setting",
+    "pluralName": "site-settings",
+    "displayName": "Site Setting",
+    "description": "网站设置"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "siteTitle": {
+      "type": "string",
+      "required": true,
+      "maxLength": 200
+    },
+    "metaDescription": {
+      "type": "text",
+      "required": true
+    },
+    "primaryColor": {
+      "type": "string",
+      "required": true,
+      "maxLength": 7
+    },
+    "heroTitle": {
+      "type": "string",
+      "required": true,
+      "maxLength": 200
+    },
+    "heroSubtitle": {
+      "type": "text",
+      "required": true
+    },
+    "heroCtaText": {
+      "type": "string",
+      "required": true,
+      "maxLength": 50
+    },
+    "heroCtaLink": {
+      "type": "string",
+      "required": true
+    },
+    "countdownEndDate": {
+      "type": "datetime",
+      "required": true
+    },
+    "contactPhone": {
+      "type": "string",
+      "required": true,
+      "maxLength": 50
+    },
+    "contactEmail": {
+      "type": "email",
+      "required": true
+    },
+    "contactAddress": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

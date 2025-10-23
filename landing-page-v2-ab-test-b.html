@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3分钟让你的数字生活彻底安全 - 版本B（解决方案导向）</title>
+    <style>
+        /* 复用主文件的基础样式 */
+        :root {
+            --primary-blue: #2563eb;
+            --success-green: #10b981;
+            --light-bg: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #e2e8f0;
+            --text-muted: #64748b;
+            --gradient-primary: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+        }
+
+        body {
+            font-family: var(--font-system);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .screen {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: var(--spacing-md);
+            position: relative;
+            scroll-snap-align: start;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* 版本B：解决方案导向 - 正向、积极的氛围 */
+        .screen-solution-first {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            color: var(--text-dark);
+        }
+
+        /* 盾牌图标 - 完整且发光 */
+        .protected-shield {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto var(--spacing-md);
+            position: relative;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                filter: drop-shadow(0 0 20px rgba(16, 185, 129, 0.5));
+            }
+            50% {
+                filter: drop-shadow(0 0 40px rgba(16, 185, 129, 0.8));
+            }
+        }
+
+        .protected-shield svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 标题 */
+        .solution-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.2;
+            animation: fade-in-up 0.8s ease-out;
+        }
+
+        .solution-title .highlight {
+            color: var(--success-green);
+            position: relative;
+        }
+
+        .solution-title .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-success);
+            border-radius: 2px;
+        }
+
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .solution-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-muted);
+            animation: fade-in-up 0.8s ease-out 0.2s backwards;
+        }
+
+        /* 三步流程 */
+        .three-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .step-item {
+            text-align: center;
+            padding: var(--spacing-md);
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            animation: fade-in-up 0.8s ease-out calc(0.4s + var(--delay)) backwards;
+        }
+
+        .step-item:nth-child(1) { --delay: 0s; }
+        .step-item:nth-child(2) { --delay: 0.1s; }
+        .step-item:nth-child(3) { --delay: 0.2s; }
+
+        .step-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-success);
+            color: white;
+            font-size: 2rem;
+            font-weight: 800;
+            border-radius: 50%;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-xs);
+            color: var(--text-dark);
+        }
+
+        .step-description {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        /* 优势列表 */
+        .benefits {
+            max-width: 800px;
+            margin: 0 auto var(--spacing-lg);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-sm);
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm);
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            animation: fade-in-left 0.6s ease-out calc(0.6s + var(--delay)) backwards;
+        }
+
+        .benefit-item:nth-child(1) { --delay: 0s; }
+        .benefit-item:nth-child(2) { --delay: 0.1s; }
+        .benefit-item:nth-child(3) { --delay: 0.2s; }
+        .benefit-item:nth-child(4) { --delay: 0.3s; }
+
+        @keyframes fade-in-left {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .benefit-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .benefit-text {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* CTA按钮 */
+        .cta-positive {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: 1.25rem 3rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+            background: var(--gradient-success);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+            animation: gentle-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes gentle-pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+            }
+            50% {
+                transform: scale(1.02);
+                box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4);
+            }
+        }
+
+        .cta-positive:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.5);
+        }
+
+        .cta-container {
+            text-align: center;
+            animation: fade-in-up 0.8s ease-out 1s backwards;
+        }
+
+        .cta-note {
+            margin-top: var(--spacing-sm);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .screen {
+                padding: var(--spacing-sm);
+            }
+
+            .three-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-positive {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* 滚动提示 */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-xs);
+            color: var(--text-muted);
+            opacity: 0.6;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        .scroll-indicator .arrow {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        A/B测试版本B：解决方案导向
+        适合: 追求正向信息的用户，避免恐惧营销
+        特点: 强调简单、快速、有效的解决方案
+    -->
+    <section class="screen screen-solution-first" id="solution-first">
+        <div class="container">
+            <!-- 完整盾牌图标 -->
+            <div class="protected-shield">
+                <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="shield-gradient-positive" x1="20" y1="10" x2="100" y2="110">
+                            <stop offset="0%" stop-color="#10b981"/>
+                            <stop offset="100%" stop-color="#059669"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- 完整的盾牌 -->
+                    <path d="M60 10L20 30V50C20 75 35 95 60 110C85 95 100 75 100 50V30L60 10Z" 
+                          fill="url(#shield-gradient-positive)" opacity="0.2"/>
+                    <path d="M60 10L20 30V50C20 75 35 95 60 110C85 95 100 75 100 50V30L60 10Z" 
+                          stroke="#10b981" stroke-width="3" fill="none"/>
+                    <!-- 大大的对勾 -->
+                    <path d="M45 60L55 70L75 45" 
+                          stroke="#10b981" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+
+            <!-- 标题 -->
+            <h1 class="solution-title">
+                <span class="highlight">3分钟</span>让你的<br>
+                数字生活<span class="highlight">彻底安全</span>
+            </h1>
+
+            <!-- 副标题 -->
+            <p class="solution-subtitle">
+                简单三步，选择最适合你的专业安全方案
+            </p>
+
+            <!-- 三步流程 -->
+            <div class="three-steps">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">选择方案</h3>
+                    <p class="step-description">
+                        根据你的设备数量和需求，选择最匹配的安全软件
+                    </p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">一键安装</h3>
+                    <p class="step-description">
+                        下载后自动安装配置，无需任何技术知识
+                    </p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">全面防护</h3>
+                    <p class="step-description">
+                        24/7自动保护，你可以安心使用所有设备
+                    </p>
+                </div>
+            </div>
+
+            <!-- 优势列表 -->
+            <div class="benefits">
+                <div class="benefit-item">
+                    <span class="benefit-icon">⚡</span>
+                    <span class="benefit-text">安装只需2分钟</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">💰</span>
+                    <span class="benefit-text">比官网便宜70%</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">🛡️</span>
+                    <span class="benefit-text">全球3亿用户信赖</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">✅</span>
+                    <span class="benefit-text">30天无条件退款</span>
+                </div>
+            </div>
+
+            <!-- CTA按钮 -->
+            <div class="cta-container">
+                <a href="#solutions" class="cta-positive">
+                    ✨ 立即查看方案（比官网便宜70%）
+                </a>
+                <p class="cta-note">
+                    ✓ 无需信用卡 ✓ 一键安装 ✓ 24小时客服
+                </p>
+            </div>
+        </div>
+
+        <!-- 滚动提示 -->
+        <div class="scroll-indicator">
+            <span>查看方案</span>
+            <span class="arrow">↓</span>
+        </div>
+    </section>
+
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 追踪页面版本
+        console.log('A/B Test Version: Solution-Oriented (B)');
+        
+        // 如果集成了GA
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'page_view', {
+                'page_version': 'solution_oriented'
+            });
+        }
+    </script>
+</body>
+</html>
+

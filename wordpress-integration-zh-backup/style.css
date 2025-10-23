@@ -1,0 +1,345 @@
+/*
+Theme Name: McAfee Landing Page Theme
+Theme URI: https://yourwebsite.com
+Author: Your Name
+Author URI: https://yourwebsite.com
+Description: 专为McAfee安全产品设计的高转化落地页主题。包含焦虑营销策略、产品对比表、价格展示和完整的表单系统。
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: mcafee-landing
+Tags: landing-page, marketing, affiliate, one-column, custom-colors, featured-images
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+/* 
+================================================================
+基础样式已内联在page-mcafee-landing.php中
+此文件仅作为WordPress主题识别使用
+
+如需优化性能，建议将page-mcafee-landing.php中的<style>标签
+内容移到此文件，然后在functions.php中使用wp_enqueue_style()加载
+================================================================
+*/
+
+/* WordPress核心样式重置 */
+.screen,
+.container {
+    /* 样式已在模板文件中定义 */
+}
+
+/* WordPress管理栏兼容性 */
+body.admin-bar {
+    padding-top: 32px;
+}
+
+@media screen and (max-width: 782px) {
+    body.admin-bar {
+        padding-top: 46px;
+    }
+}
+
+/* 
+================================================================
+联盟按钮样式（用于短代码）
+================================================================
+*/
+.affiliate-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    font-size: 1.1rem;
+}
+
+.affiliate-button-primary {
+    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+}
+
+.affiliate-button-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+    color: white;
+}
+
+.affiliate-button-secondary {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.affiliate-button-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+    color: white;
+}
+
+.affiliate-button-outline {
+    background: transparent;
+    color: #dc2626;
+    border: 2px solid #dc2626;
+}
+
+.affiliate-button-outline:hover {
+    background: #dc2626;
+    color: white;
+}
+
+/* 
+================================================================
+响应式优化
+================================================================
+*/
+@media (max-width: 768px) {
+    .affiliate-button {
+        width: 100%;
+        display: block;
+        margin: 0.5rem 0;
+    }
+}
+
+/* 
+================================================================
+WordPress编辑器样式
+================================================================
+*/
+.alignleft {
+    float: left;
+    margin-right: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.alignright {
+    float: right;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wp-caption {
+    max-width: 100%;
+}
+
+.wp-caption-text {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+/* 
+================================================================
+屏幕阅读器文本（可访问性）
+================================================================
+*/
+.screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    width: 1px;
+    word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+    background-color: #f1f1f1;
+    border-radius: 3px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+    clip: auto !important;
+    clip-path: none;
+    color: #21759b;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000;
+}
+
+/* 
+================================================================
+打印样式
+================================================================
+*/
+@media print {
+    .no-print,
+    #cookieConsent,
+    #cookieSettings,
+    #cookieOverlay,
+    .cta-button,
+    .affiliate-button {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    a {
+        text-decoration: underline;
+    }
+    
+    a[href]:after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+    }
+}
+
+/* 
+================================================================
+加载动画（可选）
+================================================================
+*/
+.loading-spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(220, 38, 38, 0.3);
+    border-top-color: #dc2626;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* 
+================================================================
+表单验证样式
+================================================================
+*/
+.form-error {
+    border-color: #dc2626 !important;
+    background-color: rgba(220, 38, 38, 0.05);
+}
+
+.error-message {
+    color: #dc2626;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+.success-message {
+    color: #10b981;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+/* 
+================================================================
+自定义滚动条（仅Webkit浏览器）
+================================================================
+*/
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1f2e;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #dc2626;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #991b1b;
+}
+
+/* 
+================================================================
+辅助类
+================================================================
+*/
+.text-center {
+    text-align: center !important;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.mt-1 { margin-top: 0.5rem !important; }
+.mt-2 { margin-top: 1rem !important; }
+.mt-3 { margin-top: 2rem !important; }
+.mt-4 { margin-top: 4rem !important; }
+
+.mb-1 { margin-bottom: 0.5rem !important; }
+.mb-2 { margin-bottom: 1rem !important; }
+.mb-3 { margin-bottom: 2rem !important; }
+.mb-4 { margin-bottom: 4rem !important; }
+
+.p-1 { padding: 0.5rem !important; }
+.p-2 { padding: 1rem !important; }
+.p-3 { padding: 2rem !important; }
+.p-4 { padding: 4rem !important; }
+
+.d-none { display: none !important; }
+.d-block { display: block !important; }
+.d-inline { display: inline !important; }
+.d-inline-block { display: inline-block !important; }
+.d-flex { display: flex !important; }
+
+.flex-column { flex-direction: column !important; }
+.flex-row { flex-direction: row !important; }
+.align-items-center { align-items: center !important; }
+.justify-content-center { justify-content: center !important; }
+.justify-content-between { justify-content: space-between !important; }
+
+/* 
+================================================================
+移动端优化
+================================================================
+*/
+@media (max-width: 768px) {
+    .hide-mobile {
+        display: none !important;
+    }
+    
+    .show-mobile {
+        display: block !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .hide-desktop {
+        display: none !important;
+    }
+    
+    .show-desktop {
+        display: block !important;
+    }
+}
+

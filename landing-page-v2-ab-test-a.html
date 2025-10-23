@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你的网络防护可能不够完善 - 版本A（中度焦虑）</title>
+    <!-- 复用主文件的完整样式 -->
+    <link rel="stylesheet" href="landing-page-v2-anxiety-marketing.html" type="text/html">
+</head>
+<body>
+    <!-- 
+        A/B测试版本A：中度焦虑
+        适合: 理性用户，追求平衡的信息呈现
+    -->
+    <section class="screen screen-anxiety" id="anxiety">
+        <div class="container">
+            <div class="broken-shield">
+                <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M60 10L20 30V50C20 75 35 95 60 110C85 95 100 75 100 50V30L60 10Z" 
+                          fill="url(#shield-gradient)" opacity="0.3"/>
+                    <path d="M60 10L20 30V50C20 60 23 70 30 78" 
+                          stroke="#f97316" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M60 10L100 30V50C100 60 97 70 90 78" 
+                          stroke="#f97316" stroke-width="4" stroke-linecap="round"/>
+                    <text x="60" y="70" text-anchor="middle" fill="#f97316" font-size="40" font-weight="bold">?</text>
+                    <defs>
+                        <linearGradient id="shield-gradient" x1="20" y1="10" x2="100" y2="110">
+                            <stop offset="0%" stop-color="#f97316"/>
+                            <stop offset="100%" stop-color="#ea580c"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+
+            <h1 class="anxiety-title" style="color: #e2e8f0;">
+                你的<span class="highlight" style="color: #f97316;">网络防护</span><br>
+                可能<span class="highlight" style="color: #f97316;">不够完善</span>
+            </h1>
+
+            <p class="anxiety-subtitle">
+                2024年，超过60%的用户遭遇过网络安全威胁
+            </p>
+
+            <div class="threat-stats">
+                <div class="stat-item">
+                    <div class="stat-number" style="color: #f97316;">60%</div>
+                    <div class="stat-label">用户受到威胁</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" style="color: #f97316;">2.8亿</div>
+                    <div class="stat-label">年度攻击次数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" style="color: #f97316;">¥1200</div>
+                    <div class="stat-label">平均损失金额</div>
+                </div>
+            </div>
+
+            <div class="anxiety-points">
+                <div class="anxiety-point" style="background: rgba(249, 115, 22, 0.1); border-left-color: #f97316;">
+                    <span class="icon">⚠️</span>
+                    <p><strong>基础防护可能已过时</strong><br>
+                    Windows Defender无法应对最新威胁</p>
+                </div>
+                <div class="anxiety-point" style="background: rgba(249, 115, 22, 0.1); border-left-color: #f97316;">
+                    <span class="icon">📱</span>
+                    <p><strong>多设备缺乏统一管理</strong><br>
+                    手机、平板、电脑各自为战</p>
+                </div>
+                <div class="anxiety-point" style="background: rgba(249, 115, 22, 0.1); border-left-color: #f97316;">
+                    <span class="icon">🔓</span>
+                    <p><strong>密码管理存在隐患</strong><br>
+                    简单密码或重复密码易被破解</p>
+                </div>
+                <div class="anxiety-point" style="background: rgba(249, 115, 22, 0.1); border-left-color: #f97316;">
+                    <span class="icon">💾</span>
+                    <p><strong>重要数据缺少备份</strong><br>
+                    勒索软件可能让你损失一切</p>
+                </div>
+            </div>
+
+            <div class="cta-container">
+                <a href="#solution" class="cta-primary" style="background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); box-shadow: 0 10px 30px rgba(249, 115, 22, 0.3);">
+                    查看专业安全方案 →
+                </a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span>了解解决方案</span>
+            <span class="arrow">↓</span>
+        </div>
+    </section>
+
+    <style>
+        /* 复用主文件的所有样式 */
+        @import url('landing-page-v2-anxiety-marketing.html');
+        
+        /* 版本A特定调整：橙色警告色系 */
+        .screen-anxiety {
+            background: #1a1f2e;
+        }
+        
+        @keyframes pulse-button {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 10px 30px rgba(249, 115, 22, 0.3);
+            }
+            50% {
+                transform: scale(1.03);
+                box-shadow: 0 15px 40px rgba(249, 115, 22, 0.4);
+            }
+        }
+    </style>
+
+    <script>
+        // 使用主文件的JavaScript逻辑
+        // 调整统计数字为更温和的数值
+        window.addEventListener('load', () => {
+            function animateCounter(element, target, duration, suffix = '') {
+                const start = 0;
+                const increment = target / (duration / 16);
+                let current = start;
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    element.textContent = Math.floor(current).toLocaleString() + suffix;
+                }, 16);
+            }
+
+            // 使用实际统计数据而非实时增长
+            const statsElements = document.querySelectorAll('.stat-number');
+            // 这些数字已经在HTML中设置，无需动画
+        });
+    </script>
+</body>
+</html>
+
+

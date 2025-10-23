@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>落地页演示选择器 - 选择你要预览的版本</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .header p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            opacity: 0.9;
+        }
+
+        .versions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .version-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .version-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--accent-color);
+        }
+
+        .version-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .version-card.original { --accent-color: linear-gradient(90deg, #2563eb, #7c3aed); }
+        .version-card.v2-high { --accent-color: linear-gradient(90deg, #dc2626, #991b1b); }
+        .version-card.v2-medium { --accent-color: linear-gradient(90deg, #f97316, #ea580c); }
+        .version-card.v2-solution { --accent-color: linear-gradient(90deg, #10b981, #059669); }
+
+        .version-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .badge-original { background: #eff6ff; color: #2563eb; }
+        .badge-v2-high { background: #fef2f2; color: #dc2626; }
+        .badge-v2-medium { background: #fff7ed; color: #f97316; }
+        .badge-v2-solution { background: #ecfdf5; color: #10b981; }
+
+        .version-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        .version-card p {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .features li {
+            padding: 0.5rem 0;
+            color: #475569;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .features li:last-child {
+            border-bottom: none;
+        }
+
+        .features li::before {
+            content: '✓ ';
+            color: #10b981;
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+
+        .stats {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat {
+            flex: 1;
+            text-align: center;
+            padding: 0.75rem;
+            background: #f8fafc;
+            border-radius: 10px;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1e293b;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-top: 0.25rem;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 12px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .docs {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .docs h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        .doc-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .doc-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: white;
+            color: #2563eb;
+            text-decoration: none;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .doc-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            color: #1d4ed8;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .versions {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .doc-links {
+                flex-direction: column;
+            }
+        }
+
+        .comparison-table {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            overflow-x: auto;
+        }
+
+        .comparison-table h3 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #1e293b;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background: #f8fafc;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        td {
+            color: #475569;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .emoji {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header">
+            <h1>🎯 落地页演示选择器</h1>
+            <p>选择你想预览的版本 - 共5个完整的落地页</p>
+        </div>
+
+        <!-- 快速对比表 -->
+        <div class="comparison-table">
+            <h3>📊 版本快速对比</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>版本</th>
+                        <th>策略</th>
+                        <th>焦虑程度</th>
+                        <th>适合用户</th>
+                        <th>预期转化</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="emoji">📋</span>原版</td>
+                        <td>信息对比</td>
+                        <td>低</td>
+                        <td>理性分析型</td>
+                        <td>2-3%</td>
+                    </tr>
+                    <tr>
+                        <td><span class="emoji">🔴</span>V2主版</td>
+                        <td>高度焦虑</td>
+                        <td>高</td>
+                        <td>快速决策型</td>
+                        <td>3-5%</td>
+                    </tr>
+                    <tr>
+                        <td><span class="emoji">🟠</span>V2版本A</td>
+                        <td>中度焦虑</td>
+                        <td>中</td>
+                        <td>平衡型</td>
+                        <td>2-4%</td>
+                    </tr>
+                    <tr>
+                        <td><span class="emoji">🟢</span>V2版本B</td>
+                        <td>解决方案</td>
+                        <td>低</td>
+                        <td>追求正向</td>
+                        <td>1.5-3%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 版本卡片 -->
+        <div class="versions">
+            <!-- 原版 -->
+            <div class="version-card original">
+                <span class="version-badge badge-original">📋 原版系统</span>
+                <h2>6方案详细对比版</h2>
+                <p>专业、全面的安全软件对比展示，包含完整的功能对比表格和FAQ</p>
+                
+                <ul class="features">
+                    <li>6种方案详细展示</li>
+                    <li>15项功能对比表</li>
+                    <li>信任徽章 + FAQ</li>
+                    <li>适合理性决策</li>
+                </ul>
+
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-value">46KB</div>
+                        <div class="stat-label">文件大小</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">2-3%</div>
+                        <div class="stat-label">预期转化</div>
+                    </div>
+                </div>
+
+                <a href="landing-page.html" class="btn" target="_blank">
+                    立即预览 →
+                </a>
+            </div>
+
+            <!-- V2主版本 -->
+            <div class="version-card v2-high">
+                <span class="version-badge badge-v2-high">🔴 V2主版 - 高焦虑</span>
+                <h2>三屏焦虑营销版</h2>
+                <p>强烈的紧迫感和冲击力，实时威胁统计+24小时倒计时，快速推动转化</p>
+                
+                <ul class="features">
+                    <li>破碎盾牌动画</li>
+                    <li>实时威胁统计器</li>
+                    <li>24小时倒计时</li>
+                    <li>实时成交通知</li>
+                </ul>
+
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-value">120KB</div>
+                        <div class="stat-label">文件大小</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">3-5%</div>
+                        <div class="stat-label">预期转化</div>
+                    </div>
+                </div>
+
+                <a href="landing-page-v2-anxiety-marketing.html" class="btn" target="_blank">
+                    立即预览 →
+                </a>
+            </div>
+
+            <!-- V2版本A -->
+            <div class="version-card v2-medium">
+                <span class="version-badge badge-v2-medium">🟠 V2版本A - 中焦虑</span>
+                <h2>平衡型营销版</h2>
+                <p>温和的焦虑提示，橙色警告色系，适合理性分析型用户</p>
+                
+                <ul class="features">
+                    <li>问号盾牌图标</li>
+                    <li>温和的脉冲效果</li>
+                    <li>静态统计数据</li>
+                    <li>平衡的转化率</li>
+                </ul>
+
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-value">85KB</div>
+                        <div class="stat-label">文件大小</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">2-4%</div>
+                        <div class="stat-label">预期转化</div>
+                    </div>
+                </div>
+
+                <a href="landing-page-v2-ab-test-a.html" class="btn" target="_blank">
+                    立即预览 →
+                </a>
+            </div>
+
+            <!-- V2版本B -->
+            <div class="version-card v2-solution">
+                <span class="version-badge badge-v2-solution">🟢 V2版本B - 解决方案</span>
+                <h2>正向解决方案版</h2>
+                <p>强调简单、快速、有效，绿色成功色系，品牌形象最佳</p>
+                
+                <ul class="features">
+                    <li>完整盾牌+对勾</li>
+                    <li>三步解决流程</li>
+                    <li>正向优势列表</li>
+                    <li>最佳用户体验</li>
+                </ul>
+
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-value">75KB</div>
+                        <div class="stat-label">文件大小</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">1.5-3%</div>
+                        <div class="stat-label">预期转化</div>
+                    </div>
+                </div>
+
+                <a href="landing-page-v2-ab-test-b.html" class="btn" target="_blank">
+                    立即预览 →
+                </a>
+            </div>
+        </div>
+
+        <!-- 文档链接 -->
+        <div class="docs">
+            <h3>📚 查看完整文档</h3>
+            <div class="doc-links">
+                <a href="COMPLETE_PROJECT_INDEX.md" class="doc-link" target="_blank">
+                    🗺️ 项目总览
+                </a>
+                <a href="QUICK_START_GUIDE.md" class="doc-link" target="_blank">
+                    ⚡ 快速上手
+                </a>
+                <a href="LANDING_PAGE_README.md" class="doc-link" target="_blank">
+                    📖 原版手册
+                </a>
+                <a href="ANXIETY_MARKETING_README.md" class="doc-link" target="_blank">
+                    🎯 V2手册
+                </a>
+                <a href="AB_TEST_COMPARISON.md" class="doc-link" target="_blank">
+                    🧪 A/B测试
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 记录访问
+        console.log('🎯 落地页演示选择器');
+        console.log('可用版本：');
+        console.log('1. 原版 - landing-page.html');
+        console.log('2. V2主版 - landing-page-v2-anxiety-marketing.html');
+        console.log('3. V2版本A - landing-page-v2-ab-test-a.html');
+        console.log('4. V2版本B - landing-page-v2-ab-test-b.html');
+    </script>
+</body>
+</html>
+

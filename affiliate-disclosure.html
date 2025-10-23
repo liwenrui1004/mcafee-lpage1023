@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="了解我们的联盟关系披露和透明度承诺 - 我们如何通过推荐链接获得佣金，同时保持评测的独立性和客观性">
+    <title>联盟披露声明 - 透明度与信任 | 网络安全评测中心</title>
+    <style>
+        :root {
+            --primary-color: #c12026;
+            --secondary-color: #1a1a2e;
+            --text-color: #333;
+            --text-light: #666;
+            --border-color: #e0e0e0;
+            --bg-light: #f8f9fa;
+            --highlight-bg: #fff3cd;
+            --highlight-border: #ffc107;
+            --success-color: #28a745;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            line-height: 1.7;
+            color: var(--text-color);
+            background: #fff;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            background: var(--secondary-color);
+            color: white;
+            padding: var(--spacing-sm) 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-md);
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* 主容器 */
+        .container {
+            max-width: 900px;
+            margin: var(--spacing-xl) auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* 页面标题 */
+        .page-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.2;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            font-weight: 300;
+        }
+
+        .last-updated {
+            margin-top: var(--spacing-sm);
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        /* 核心披露块 */
+        .core-disclosure {
+            background: var(--highlight-bg);
+            border-left: 5px solid var(--highlight-border);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.15);
+        }
+
+        .core-disclosure h2 {
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-md);
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .core-disclosure p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .core-disclosure strong {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* 内容区块 */
+        .content-section {
+            margin: var(--spacing-xl) 0;
+            padding: var(--spacing-lg) 0;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .content-section h3 {
+            font-size: 1.4rem;
+            color: var(--secondary-color);
+            margin: var(--spacing-lg) 0 var(--spacing-md) 0;
+        }
+
+        .content-section p {
+            margin-bottom: var(--spacing-md);
+            line-height: 1.8;
+        }
+
+        .content-section ul {
+            margin: var(--spacing-md) 0;
+            padding-left: var(--spacing-lg);
+        }
+
+        .content-section li {
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.7;
+        }
+
+        /* 信息卡片 */
+        .info-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: var(--spacing-lg);
+            margin: var(--spacing-md) 0;
+        }
+
+        .info-card h3 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* 保障徽章 */
+        .guarantee-badges {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .badge {
+            background: white;
+            border: 2px solid var(--success-color);
+            border-radius: 12px;
+            padding: var(--spacing-md);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.15);
+        }
+
+        .badge-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .badge-title {
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .badge-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* FTC 合规声明 */
+        .ftc-notice {
+            background: #e7f3ff;
+            border-left: 5px solid #0066cc;
+            padding: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+            border-radius: 8px;
+        }
+
+        .ftc-notice h3 {
+            color: #0066cc;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* CTA 按钮 */
+        .cta-box {
+            background: linear-gradient(135deg, var(--primary-color), #d63031);
+            color: white;
+            padding: var(--spacing-xl);
+            border-radius: 12px;
+            text-align: center;
+            margin: var(--spacing-xl) 0;
+        }
+
+        .cta-box h2 {
+            color: white;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .btn-home {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-home:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+        }
+
+        /* 页脚 */
+        .footer {
+            background: var(--secondary-color);
+            color: white;
+            padding: var(--spacing-xl) 0 var(--spacing-md);
+            margin-top: var(--spacing-xl);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .footer-column h4 {
+            margin-bottom: var(--spacing-md);
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: var(--spacing-md);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .guarantee-badges {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                margin: var(--spacing-md) auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="landing-page-v2-anxiety-marketing.html" class="logo">🛡️ 网络安全评测中心</a>
+            <ul class="nav-links">
+                <li><a href="landing-page-v2-anxiety-marketing.html">首页</a></li>
+                <li><a href="about-us.html">关于我们</a></li>
+                <li><a href="contact.html">联系我们</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <main class="container">
+        <!-- 页面标题 -->
+        <header class="page-header">
+            <h1 class="page-title">🤝 透明度与信任：我们的联盟关系披露</h1>
+            <p class="page-subtitle">我们致力于为您提供诚实、客观的网络安全产品评测</p>
+            <p class="last-updated">最后更新：2025年10月 | 版本 2.0</p>
+        </header>
+
+        <!-- 核心披露声明 -->
+        <section class="core-disclosure">
+            <h2>⚠️ 重要披露声明</h2>
+            <p>
+                <strong>本网站包含联盟链接。</strong>当您通过本站的推荐链接购买产品时，我们可能会从商家处获得佣金。这些佣金帮助我们维持网站运营、进行深度测试并提供免费的专业内容。
+            </p>
+            <p>
+                <strong>请放心：</strong>我们获得的佣金<strong>不会增加您的购买成本</strong>，您支付的价格与直接从官网购买完全一致。我们的评测和推荐完全基于独立测试和客观数据，不受商业关系影响。
+            </p>
+        </section>
+
+        <!-- FTC 合规声明 -->
+        <section class="ftc-notice">
+            <h3>📋 FTC 合规声明</h3>
+            <p>
+                根据美国联邦贸易委员会（FTC）16 CFR Part 255的要求，我们明确披露：本网站与所评测的网络安全产品提供商存在联盟合作关系。我们遵守所有适用的消费者保护法规和广告披露要求。
+            </p>
+        </section>
+
+        <!-- 如何运作 -->
+        <section class="content-section">
+            <h2>🔍 联盟关系如何运作</h2>
+            
+            <h3>1. 推荐链接机制</h3>
+            <p>
+                当您点击本站标注的产品推荐链接并完成购买时，产品提供商会向我们支付一定比例的佣金。这是一种基于成果的合作模式，只有在您实际购买时我们才会获得收入。
+            </p>
+
+            <h3>2. 佣金不影响您的价格</h3>
+            <p>
+                <strong>重要保证：</strong>通过我们的链接购买产品，您支付的价格与直接从官网购买<strong>完全相同</strong>。事实上，我们经常能为读者争取到独家优惠码，让您以更低的价格购买。
+            </p>
+
+            <h3>3. 合作伙伴</h3>
+            <p>本站目前与以下网络安全品牌存在联盟合作关系：</p>
+            <ul>
+                <li><strong>McAfee</strong> - 通过 Impact Radius 联盟网络</li>
+                <li><strong>Norton (NortonLifeLock)</strong> - 通过 Commission Junction</li>
+                <li><strong>TotalAV</strong> - 直接联盟计划</li>
+                <li><strong>其他安全软件品牌</strong> - 通过各大联盟网络</li>
+            </ul>
+        </section>
+
+        <!-- 独立性保障 -->
+        <section class="content-section">
+            <h2>✅ 我们的独立性和客观性保障</h2>
+
+            <div class="guarantee-badges">
+                <div class="badge">
+                    <div class="badge-icon">🔬</div>
+                    <div class="badge-title">真实测试</div>
+                    <div class="badge-desc">所有产品均购买正版并进行168小时以上的真实环境测试</div>
+                </div>
+
+                <div class="badge">
+                    <div class="badge-icon">📊</div>
+                    <div class="badge-title">数据驱动</div>
+                    <div class="badge-desc">评测基于AV-Test、AV-Comparatives等权威实验室数据</div>
+                </div>
+
+                <div class="badge">
+                    <div class="badge-icon">🚫</div>
+                    <div class="badge-title">拒绝付费评测</div>
+                    <div class="badge-desc">任何品牌都无法通过付费获得更高评分或推荐位置</div>
+                </div>
+
+                <div class="badge">
+                    <div class="badge-icon">⚖️</div>
+                    <div class="badge-title">客观对比</div>
+                    <div class="badge-desc">我们同时展示优点和缺点，让您做出明智决策</div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>💡 我们的编辑原则</h3>
+                <ul>
+                    <li><strong>用户至上：</strong>我们的首要目标是帮助您找到最适合您需求的产品，而非推荐佣金最高的产品</li>
+                    <li><strong>诚实评测：</strong>我们会坦诚指出每款产品的优缺点，不会隐藏问题</li>
+                    <li><strong>持续更新：</strong>我们定期重新测试产品并更新评测内容，确保信息准确性</li>
+                    <li><strong>透明标注：</strong>所有联盟链接都会清晰标注，不存在隐藏推广</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 用户权益 -->
+        <section class="content-section">
+            <h2>🛡️ 您的权益保障</h2>
+
+            <h3>价格和信息的准确性</h3>
+            <p>
+                我们尽最大努力确保展示的价格、功能和信息准确无误。但请注意：
+            </p>
+            <ul>
+                <li>产品价格和促销活动可能随时变化</li>
+                <li>软件功能可能因版本更新而改变</li>
+                <li>建议您在购买前访问官方网站确认最新信息</li>
+            </ul>
+
+            <h3>免责声明</h3>
+            <p>
+                <strong>本网站提供的是信息性内容和专业建议，但最终购买决策由您自己做出。</strong>我们不对您使用本站推荐的产品所产生的任何结果负责。网络安全软件的效果可能因个人使用环境和习惯而异。
+            </p>
+
+            <h3>您的选择权</h3>
+            <p>
+                您完全可以选择不通过我们的链接购买产品。即使您直接访问品牌官网购买，我们的评测内容仍然对您免费开放。我们希望无论您如何选择，都能从我们的内容中获得价值。
+            </p>
+        </section>
+
+        <!-- 数据隐私 -->
+        <section class="content-section">
+            <h2>🔒 数据隐私和追踪</h2>
+            <p>
+                当您点击联盟链接时，我们的联盟网络合作伙伴可能会使用Cookie和追踪技术来记录您的点击和购买行为。这些数据用于：
+            </p>
+            <ul>
+                <li>计算应支付给我们的佣金</li>
+                <li>优化用户体验</li>
+                <li>防止欺诈行为</li>
+            </ul>
+            <p>
+                这些追踪仅限于购买行为，不会收集您的个人敏感信息。更多详情请查看我们的 <a href="privacy-policy.html" style="color: var(--primary-color); font-weight: bold;">隐私政策</a>。
+            </p>
+        </section>
+
+        <!-- 联系我们 -->
+        <section class="content-section">
+            <h2>📧 联系我们</h2>
+            <p>
+                如果您对我们的联盟关系、评测方法或任何内容有疑问，欢迎随时联系我们：
+            </p>
+            <div class="info-card">
+                <p><strong>邮箱：</strong> info@cybersecurity-review.com</p>
+                <p><strong>联系表单：</strong> <a href="contact.html" style="color: var(--primary-color);">点击访问</a></p>
+                <p><strong>响应时间：</strong> 我们承诺在24-48小时内回复所有咨询</p>
+            </div>
+        </section>
+
+        <!-- 版本历史 -->
+        <section class="content-section">
+            <h2>📅 披露政策更新历史</h2>
+            <ul>
+                <li><strong>2025年10月</strong> - 版本2.0：增加FTC合规声明，更新合作伙伴列表</li>
+                <li><strong>2025年1月</strong> - 版本1.5：添加GDPR相关隐私保护条款</li>
+                <li><strong>2024年6月</strong> - 版本1.0：首次发布联盟披露声明</li>
+            </ul>
+            <p style="margin-top: var(--spacing-md); color: var(--text-light); font-style: italic;">
+                我们承诺在披露政策发生重大变化时，通过网站公告通知用户。
+            </p>
+        </section>
+
+        <!-- 返回首页 CTA -->
+        <section class="cta-box">
+            <h2>感谢您的信任 🙏</h2>
+            <p style="margin-bottom: var(--spacing-lg);">
+                透明是我们与读者建立信任的基础。现在您了解了我们的运作方式，欢迎回到首页查看我们的专业评测！
+            </p>
+            <a href="landing-page-v2-anxiety-marketing.html" class="btn-home">🏠 返回首页查看评测</a>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>快速导航</h4>
+                    <ul class="footer-links">
+                        <li><a href="landing-page-v2-anxiety-marketing.html">首页</a></li>
+                        <li><a href="about-us.html">关于我们</a></li>
+                        <li><a href="contact.html">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>法律信息</h4>
+                    <ul class="footer-links">
+                        <li><a href="affiliate-disclosure.html">联盟披露</a></li>
+                        <li><a href="privacy-policy.html">隐私政策</a></li>
+                        <li><a href="terms-of-service.html">使用条款</a></li>
+                        <li><a href="cookie-policy.html">Cookie政策</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>资源中心</h4>
+                    <ul class="footer-links">
+                        <li><a href="#testing-method">测试方法</a></li>
+                        <li><a href="#faq">常见问题</a></li>
+                        <li><a href="#blog">安全博客</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>关注我们</h4>
+                    <ul class="footer-links">
+                        <li><a href="#twitter">Twitter</a></li>
+                        <li><a href="#facebook">Facebook</a></li>
+                        <li><a href="#linkedin">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 网络安全评测中心. 保留所有权利.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+                    本网站包含联盟链接。通过推荐链接购买产品我们可能获得佣金。
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

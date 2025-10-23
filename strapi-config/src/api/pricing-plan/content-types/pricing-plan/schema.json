@@ -1,0 +1,63 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pricing_plans",
+  "info": {
+    "singularName": "pricing-plan",
+    "pluralName": "pricing-plans",
+    "displayName": "Pricing Plan",
+    "description": "定价方案"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "originalPrice": {
+      "type": "decimal",
+      "required": true
+    },
+    "discountPrice": {
+      "type": "decimal",
+      "required": true
+    },
+    "devices": {
+      "type": "integer",
+      "required": true,
+      "min": 1
+    },
+    "isFeatured": {
+      "type": "boolean",
+      "default": false
+    },
+    "badge": {
+      "type": "string",
+      "maxLength": 50
+    },
+    "features": {
+      "type": "json",
+      "required": true
+    },
+    "ctaText": {
+      "type": "string",
+      "required": true,
+      "maxLength": 50
+    },
+    "ctaLink": {
+      "type": "string",
+      "required": true
+    },
+    "sortOrder": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

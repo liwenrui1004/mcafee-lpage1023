@@ -1,0 +1,3714 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="你的数字生活正在被24小时监控 - 立即获取顶级安全防护方案">
+    <title>你的数据正在被监控 - 立即获得保护</title>
+    <style>
+        /* ============================================
+           CSS 变量系统
+        ============================================ */
+        :root {
+            /* 焦虑色系 */
+            --danger-red: #dc2626;
+            --danger-dark: #991b1b;
+            --warning-orange: #f97316;
+            --dark-bg: #0f1419;
+            --dark-secondary: #1a1f2e;
+            
+            /* 希望色系 */
+            --success-green: #10b981;
+            --primary-blue: #2563eb;
+            --light-bg: #f8fafc;
+            --light-secondary: #f1f5f9;
+            
+            /* 中性色 */
+            --text-dark: #1e293b;
+            --text-light: #e2e8f0;
+            --text-muted: #64748b;
+            
+            /* 渐变 */
+            --gradient-danger: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            --gradient-primary: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            
+            /* 间距 */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            
+            /* 其他颜色 */
+            --secondary-color: #1a1f2e;
+            
+            /* 字体 */
+            --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+        }
+
+        /* ============================================
+           全局重置
+        ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-system);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ============================================
+           屏幕容器基础
+        ============================================ */
+        .screen {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: var(--spacing-md);
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* ============================================
+           首屏 - 焦虑制造区
+        ============================================ */
+        .screen-anxiety {
+            background: var(--dark-bg);
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 动态背景粒子效果 */
+        .screen-anxiety::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(220, 38, 38, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(249, 115, 22, 0.1) 0%, transparent 50%);
+            animation: pulse-bg 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-bg {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* 破碎盾牌图标 */
+        .broken-shield {
+            width: 120px;
+            height: 120px;
+            margin: 4rem auto var(--spacing-md);
+            position: relative;
+            animation: shake 2s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            25% { transform: translateX(-5px) rotate(-2deg); }
+            75% { transform: translateX(5px) rotate(2deg); }
+        }
+
+        .broken-shield svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 20px rgba(220, 38, 38, 0.5));
+        }
+
+        /* 主标题 */
+        .anxiety-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.2;
+            position: relative;
+            z-index: 1;
+            animation: fade-in-up 0.8s ease-out;
+        }
+
+        .anxiety-title .highlight {
+            color: var(--danger-red);
+            text-shadow: 0 0 30px rgba(220, 38, 38, 0.5);
+        }
+
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 副标题 */
+        .anxiety-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-light);
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+            animation: fade-in-up 0.8s ease-out 0.2s backwards;
+        }
+
+        /* 后果说明小字 */
+        .consequences-note {
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-muted);
+            opacity: 0.8;
+            position: relative;
+            z-index: 1;
+            animation: fade-in-up 0.8s ease-out 0.3s backwards;
+            line-height: 1.8;
+        }
+
+        .consequences-note .stat-highlight {
+            color: var(--danger-red);
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        /* 威胁统计器 */
+        .threat-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: var(--spacing-md);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            backdrop-filter: blur(10px);
+            animation: fade-in-up 0.8s ease-out calc(0.4s + var(--delay)) backwards;
+        }
+
+        .stat-item:nth-child(1) { --delay: 0s; }
+        .stat-item:nth-child(2) { --delay: 0.1s; }
+        .stat-item:nth-child(3) { --delay: 0.2s; }
+
+        .stat-number {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--danger-red);
+            font-variant-numeric: tabular-nums;
+            text-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            opacity: 0.8;
+            margin-top: var(--spacing-xs);
+        }
+
+        /* 焦虑点列表 - 2x2网格 */
+        .anxiety-points {
+            max-width: 900px;
+            margin: 0 auto var(--spacing-lg);
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+        }
+
+        .anxiety-point {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md);
+            background: rgba(220, 38, 38, 0.1);
+            border-left: 3px solid var(--danger-red);
+            border-radius: 8px;
+            animation: fade-in-left 0.6s ease-out calc(0.6s + var(--delay)) backwards;
+        }
+
+        .anxiety-point:nth-child(1) { --delay: 0s; }
+        .anxiety-point:nth-child(2) { --delay: 0.1s; }
+        .anxiety-point:nth-child(3) { --delay: 0.2s; }
+        .anxiety-point:nth-child(4) { --delay: 0.3s; }
+
+        @keyframes fade-in-left {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .anxiety-point .icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .anxiety-point p {
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        /* CTA按钮 */
+        .cta-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: 1.25rem 3rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+            background: var(--gradient-danger);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+            animation: pulse-button 2s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes pulse-button {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 15px 40px rgba(220, 38, 38, 0.5);
+            }
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(220, 38, 38, 0.5);
+        }
+
+        .cta-container {
+            text-align: center;
+            animation: fade-in-up 0.8s ease-out 1s backwards;
+        }
+
+        /* 滚动提示 */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-xs);
+            color: var(--text-light);
+            opacity: 0.6;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        .scroll-indicator .arrow {
+            font-size: 2rem;
+        }
+
+        /* ============================================
+           中屏 - 解决方案钩子
+        ============================================ */
+        .screen-solution {
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            color: var(--text-dark);
+        }
+
+        .solution-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .solution-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-dark);
+        }
+
+        .solution-title .highlight {
+            color: var(--success-green);
+        }
+
+        .solution-subtitle {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: var(--text-muted);
+        }
+
+        /* 方案卡片网格 */
+        .solution-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .solution-card {
+            background: white;
+            border-radius: 20px;
+            padding: var(--spacing-md);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--card-gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .solution-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .solution-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 卡片特定渐变 */
+        .solution-card.mcafee { --card-gradient: linear-gradient(90deg, #dc2626, #f97316); }
+        .solution-card.totalav { --card-gradient: linear-gradient(90deg, #2563eb, #7c3aed); }
+        .solution-card.norton { --card-gradient: linear-gradient(90deg, #eab308, #f59e0b); }
+
+        /* 推荐标签 */
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border-radius: 20px;
+            margin-bottom: var(--spacing-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-popular {
+            background: var(--gradient-danger);
+            color: white;
+        }
+
+        .badge-performance {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .badge-security {
+            background: var(--gradient-success);
+            color: white;
+        }
+
+        /* 问题-解决方案结构 */
+        .hook-problem {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm);
+            background: rgba(220, 38, 38, 0.05);
+            border-radius: 10px;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .hook-problem .icon {
+            font-size: 1.5rem;
+        }
+
+        .hook-problem p {
+            font-size: 1rem;
+            color: var(--danger-red);
+            font-weight: 600;
+        }
+
+        .hook-solution {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm);
+            background: rgba(16, 185, 129, 0.05);
+            border-radius: 10px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hook-solution .icon {
+            font-size: 1.5rem;
+        }
+
+        .hook-solution p {
+            font-size: 1.05rem;
+            color: var(--success-green);
+            font-weight: 600;
+        }
+
+        /* 价格显示 */
+        .price-display {
+            text-align: center;
+            padding-top: var(--spacing-sm);
+            border-top: 2px dashed #e2e8f0;
+        }
+
+        .price-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .price-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        .price-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        /* 卡片CTA按钮 */
+        .card-cta {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: white;
+            background: var(--card-gradient);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: var(--spacing-md);
+        }
+
+        .card-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ============================================
+           场景化横评对比样式
+        ============================================ */
+        .update-badge {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success-green);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: var(--spacing-sm);
+        }
+
+        .scenario-section {
+            margin-bottom: var(--spacing-xl);
+            background: white;
+            border-radius: 20px;
+            padding: var(--spacing-lg);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .scenario-header {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 3px solid #f1f5f9;
+        }
+
+        .scenario-icon {
+            font-size: 3rem;
+            line-height: 1;
+        }
+
+        .scenario-info {
+            flex: 1;
+        }
+
+        .scenario-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .scenario-desc {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* 对比网格 */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .compare-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: var(--spacing-md);
+            transition: all 0.3s ease;
+        }
+
+        .compare-card.winner {
+            border: 3px solid #10b981;
+            background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 100%);
+            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.2);
+        }
+
+        .compare-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .card-header h4 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin: 0;
+        }
+
+        .winner-badge {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .badge-alt {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .price-row {
+            text-align: center;
+            padding: var(--spacing-sm);
+            background: rgba(59, 130, 246, 0.05);
+            border-radius: 12px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .price-row .price-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+        }
+
+        .price-row .price-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .key-feature {
+            background: rgba(251, 191, 36, 0.1);
+            border-left: 4px solid #f59e0b;
+            padding: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .key-feature strong {
+            color: #d97706;
+        }
+
+        /* 优缺点对比 */
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .pros, .cons {
+            padding: var(--spacing-sm);
+            border-radius: 12px;
+        }
+
+        .pros {
+            background: rgba(16, 185, 129, 0.05);
+            border: 2px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .cons {
+            background: rgba(220, 38, 38, 0.05);
+            border: 2px solid rgba(220, 38, 38, 0.2);
+        }
+
+        .pros h5 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--success-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .cons h5 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--danger-red);
+            margin-bottom: 0.5rem;
+        }
+
+        .pros ul, .cons ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .pros ul li {
+            padding: 0.4rem 0;
+            font-size: 0.95rem;
+            color: #064e3b;
+            line-height: 1.5;
+        }
+
+        .cons ul li {
+            padding: 0.4rem 0;
+            font-size: 0.95rem;
+            color: #7f1d1d;
+            line-height: 1.5;
+        }
+
+        .recommendation {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #064e3b;
+        }
+
+        .recommendation strong {
+            color: #059669;
+        }
+
+        .verdict {
+            background: rgba(100, 116, 139, 0.1);
+            border-left: 4px solid #64748b;
+            border-radius: 8px;
+            padding: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+            font-size: 0.95rem;
+            color: #475569;
+        }
+
+        .verdict strong {
+            color: var(--text-dark);
+        }
+
+        .compare-cta {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .compare-cta.primary {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .compare-cta.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        /* 快速决策指南 */
+        .decision-guide {
+            background: linear-gradient(135deg, #fef3c7, #fef9c3);
+            border-radius: 20px;
+            padding: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+            border: 3px solid #fbbf24;
+        }
+
+        .decision-guide h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #78350f;
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .guide-item {
+            background: white;
+            border-radius: 12px;
+            padding: var(--spacing-md);
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .guide-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .guide-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .guide-item strong {
+            display: block;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .guide-item p {
+            font-size: 1rem;
+            color: var(--primary-blue);
+            font-weight: 700;
+            margin: 0;
+        }
+
+        /* ============================================
+           第三屏 - 权威横评对比
+        ============================================ */
+        .screen-detailed-comparison {
+            background: var(--light);
+            padding: var(--spacing-lg) 0;
+        }
+
+        .comparison-intro {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto var(--spacing-md);
+        }
+
+        .comparison-intro h2 {
+            font-size: clamp(1.5rem, 3vw, 1.8rem);
+            color: var(--text-dark);
+            font-weight: 800;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .comparison-intro p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .save-prompt {
+            background: white;
+            border-radius: 12px;
+            padding: var(--spacing-md);
+            margin: 0 auto var(--spacing-md);
+            max-width: 900px;
+            border-left: 4px solid var(--success-green);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .save-prompt h3 {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-xs);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .save-prompt p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.5;
+        }
+
+        .save-actions {
+            display: flex;
+            gap: var(--spacing-xs);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-blue);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        /* 对比表格容器 */
+        .comparison-table-container {
+            overflow-x: auto;
+            margin-bottom: var(--spacing-md);
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: var(--spacing-md);
+        }
+
+        /* 场景对比表格样式 */
+        .scenario-comparison-section {
+            margin-top: var(--spacing-lg);
+        }
+
+        .scenario-comparison-title {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .scenario-comparison-table {
+            width: 100%;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .scenario-comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .scenario-comparison-table th {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .scenario-comparison-table th:first-child {
+            width: 25%;
+        }
+
+        .scenario-comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--light);
+            vertical-align: top;
+        }
+
+        .scenario-comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .scenario-comparison-table .scenario-name {
+            font-weight: 700;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .scenario-comparison-table .scenario-desc {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+            line-height: 1.5;
+        }
+
+        .scenario-recommendation {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+
+        .scenario-recommendation .product-info {
+            flex: 1;
+        }
+
+        .scenario-recommendation .product-name {
+            font-weight: 700;
+            color: var(--primary-blue);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .scenario-recommendation .product-reason {
+            color: var(--text-dark);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .scenario-recommendation .product-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.5rem;
+        }
+
+        .scenario-recommendation .feature-tag {
+            background: var(--light);
+            color: var(--text-dark);
+            padding: 0.25rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .scenario-recommendation .feature-tag.highlight {
+            background: var(--success-green);
+            color: white;
+        }
+
+        .scenario-recommendation .product-logo-mini {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1000px;
+        }
+
+        .comparison-table th {
+            background: var(--light);
+            padding: 0.5rem 0.4rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-dark);
+            border-bottom: 2px solid #e2e8f0;
+            font-size: 0.7rem;
+            line-height: 1.2;
+        }
+
+        .comparison-table td {
+            padding: 0.4rem 0.4rem;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: middle;
+            font-size: 0.75rem;
+            line-height: 1.25;
+        }
+
+        /* 紧凑表格样式 */
+        .compact-table th {
+            padding: 0.5rem 0.35rem;
+            font-size: 0.68rem;
+            line-height: 1.2;
+        }
+
+        .compact-table td {
+            padding: 0.45rem 0.35rem;
+            font-size: 0.7rem;
+            line-height: 1.25;
+        }
+
+        .compact-table .product-name-cell {
+            background: #f8fafc;
+        }
+
+        .product-header-compact {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .product-logo-small {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .product-name-small {
+            font-weight: 600;
+            font-size: 0.72rem;
+            color: var(--text-dark);
+            line-height: 1.15;
+        }
+
+        .rating-small {
+            font-size: 0.65rem;
+            color: #f59e0b;
+            margin-top: 1px;
+        }
+
+        .best-value-small {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        .best-value-small.performance {
+            background: linear-gradient(135deg, #6d28d9, #5b21b6);
+        }
+
+        .best-value-small.protection {
+            background: linear-gradient(135deg, #00b0f0, #0284c7);
+        }
+
+        .feature-item {
+            padding: 2px 0;
+            font-size: 0.72rem;
+            line-height: 1.3;
+        }
+
+        .feature-item.yes {
+            color: #059669;
+            font-weight: 500;
+        }
+
+        .feature-item.limited {
+            color: #f59e0b;
+        }
+
+        .feature-item.no {
+            color: #dc2626;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .product-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.3rem;
+        }
+
+        .product-logo {
+            width: 35px;
+            height: 35px;
+            margin-right: 0.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: white;
+        }
+
+        .product-name {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            line-height: 1.3;
+        }
+
+        .rating {
+            color: #f59e0b;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .best-value {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--success-green), #059669);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-top: 5px;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+        }
+
+        .feature-category {
+            background: var(--light);
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+        }
+
+        .feature-name {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .yes {
+            color: var(--success-green);
+            font-weight: 600;
+        }
+
+        .no {
+            color: var(--danger-red);
+            font-weight: 500;
+        }
+
+        .limited {
+            color: #f59e0b;
+            font-weight: 500;
+        }
+
+        /* 测试结果卡片 */
+        .test-results {
+            margin-top: var(--spacing-xl);
+        }
+
+        .test-results h3 {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        .test-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .test-card {
+            background: white;
+            border-radius: 16px;
+            padding: var(--spacing-lg);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .test-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .test-card h4 {
+            margin-bottom: var(--spacing-md);
+            color: var(--text-dark);
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .test-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: var(--spacing-md);
+            line-height: 1.5;
+        }
+
+        .test-results-bars {
+            margin-top: var(--spacing-md);
+        }
+
+        .result-item {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .result-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .result-bar {
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .result-fill {
+            height: 100%;
+            border-radius: 5px;
+            transition: width 1s ease;
+        }
+
+        .mcafee-fill {
+            background: linear-gradient(135deg, #c12026, #8b0000);
+        }
+
+        .norton-fill {
+            background: linear-gradient(135deg, #00b0f0, #0078d4);
+        }
+
+        .totalav-fill {
+            background: linear-gradient(135deg, #6d28d9, #4c1d95);
+        }
+
+        /* 结论卡片 */
+        .conclusion {
+            background: white;
+            border-radius: 16px;
+            padding: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .conclusion h3 {
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-dark);
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        .conclusion > p {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto var(--spacing-lg);
+            line-height: 1.7;
+        }
+
+        .recommendation-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .recommendation-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            border-radius: 12px;
+            padding: var(--spacing-lg);
+            text-align: center;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .recommendation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-blue);
+        }
+
+        .recommendation-card h4 {
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-dark);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .recommendation-card p {
+            color: var(--text-muted);
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.6;
+        }
+
+        .recommendation-card p strong {
+            color: var(--primary-blue);
+            display: block;
+            margin-top: var(--spacing-sm);
+            font-size: 1.05rem;
+        }
+
+        .winner-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-top: var(--spacing-sm);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+        }
+
+        /* ============================================
+           尾屏 - 终极行动号召
+        ============================================ */
+        .screen-action {
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+            color: var(--text-dark);
+        }
+
+        .action-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .action-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: var(--spacing-sm);
+            color: var(--danger-red);
+        }
+
+        .action-subtitle {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: var(--text-muted);
+        }
+
+        /* 倒计时器 */
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .countdown-item {
+            text-align: center;
+            padding: var(--spacing-md);
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            min-width: 100px;
+        }
+
+        .countdown-number {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--danger-red);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: var(--spacing-xs);
+        }
+
+        /* 特权清单 */
+        .privileges {
+            max-width: 700px;
+            margin: 0 auto var(--spacing-lg);
+        }
+
+        .privilege-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md);
+            background: white;
+            border-radius: 12px;
+            margin-bottom: var(--spacing-sm);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid var(--success-green);
+        }
+
+        .privilege-item .icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .privilege-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-dark);
+        }
+
+        .privilege-content p {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        /* 价格对比表 */
+        .price-comparison {
+            max-width: 600px;
+            margin: 0 auto var(--spacing-lg);
+            background: white;
+            border-radius: 16px;
+            padding: var(--spacing-md);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .price-comparison-title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-dark);
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .comparison-item {
+            text-align: center;
+            padding: var(--spacing-md);
+            border-radius: 12px;
+        }
+
+        .comparison-item.official {
+            background: #fef2f2;
+            opacity: 0.7;
+        }
+
+        .comparison-item.our {
+            background: #ecfdf5;
+            border: 2px solid var(--success-green);
+        }
+
+        .comparison-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .comparison-price {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        .comparison-item.official .comparison-price {
+            color: var(--text-muted);
+            text-decoration: line-through;
+        }
+
+        .comparison-item.our .comparison-price {
+            color: var(--success-green);
+        }
+
+        .savings-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--gradient-success);
+            color: white;
+            font-weight: 700;
+            border-radius: 20px;
+            margin-top: var(--spacing-sm);
+        }
+
+        /* 终极CTA */
+        .final-cta {
+            text-align: center;
+        }
+
+        .cta-mega {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: 1.5rem 4rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+            background: var(--gradient-danger);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 50px rgba(220, 38, 38, 0.4);
+            animation: mega-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes mega-pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 15px 50px rgba(220, 38, 38, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 20px 60px rgba(220, 38, 38, 0.6);
+            }
+        }
+
+        .cta-mega:hover {
+            transform: translateY(-3px) scale(1.08);
+        }
+
+        .cta-secondary {
+            display: inline-block;
+            margin-top: var(--spacing-md);
+            font-size: 1rem;
+            color: var(--text-muted);
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .cta-secondary:hover {
+            color: var(--text-dark);
+        }
+
+        /* 信任背书 */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: 0.75rem 1.5rem;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .trust-badge .icon {
+            font-size: 1.2rem;
+        }
+
+        /* 实时成交记录 */
+        .live-purchases {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: white;
+            padding: var(--spacing-sm);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            max-width: 300px;
+            z-index: 1000;
+            animation: slide-in-left 0.5s ease-out;
+            opacity: 0;
+        }
+
+        .live-purchases.show {
+            opacity: 1;
+        }
+
+        @keyframes slide-in-left {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .live-purchase-content {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .live-purchase-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+        }
+
+        .live-purchase-text {
+            flex: 1;
+        }
+
+        .live-purchase-name {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .live-purchase-action {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .live-purchase-savings {
+            color: var(--success-green);
+            font-weight: 700;
+        }
+
+        /* ============================================
+           响应式设计
+        ============================================ */
+        @media (max-width: 768px) {
+            .screen {
+                padding: var(--spacing-sm);
+            }
+
+            .broken-shield {
+                width: 80px;
+                height: 80px;
+            }
+
+            .threat-stats {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-sm);
+            }
+
+            /* 移动端焦虑点改为单列 */
+            .anxiety-points {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-sm);
+            }
+
+            .solution-cards {
+                grid-template-columns: 1fr;
+            }
+
+            /* 场景化对比移动端适配 */
+            .scenario-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .scenario-icon {
+                font-size: 2.5rem;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pros-cons {
+                grid-template-columns: 1fr;
+            }
+
+            .guide-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* 横评对比移动端适配 */
+            .save-actions {
+                flex-direction: column;
+            }
+
+            .comparison-table-container {
+                padding: var(--spacing-sm);
+            }
+
+            .test-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .recommendation-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .countdown-timer {
+                gap: var(--spacing-sm);
+            }
+
+            .countdown-item {
+                min-width: 70px;
+                padding: var(--spacing-sm);
+            }
+
+            .comparison-row {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-primary {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .cta-mega {
+                padding: 1.25rem 2.5rem;
+                font-size: 1.25rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .live-purchases {
+                left: 10px;
+                right: 10px;
+                max-width: none;
+            }
+
+            .trust-badges {
+                gap: var(--spacing-sm);
+            }
+        }
+
+        @media (max-width: 480px) {
+            :root {
+                --spacing-md: 1.5rem;
+                --spacing-lg: 3rem;
+            }
+
+            .scroll-indicator {
+                bottom: 20px;
+            }
+        }
+
+        /* ============================================
+           性能优化
+        ============================================ */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* GPU加速 */
+        .solution-card,
+        .cta-primary,
+        .cta-mega,
+        .stat-item {
+            will-change: transform;
+        }
+
+        /* ============================================
+           专属优惠按钮样式
+        ============================================ */
+        .exclusive-offer-row {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(16, 185, 129, 0.05));
+            border-top: 3px solid var(--primary-blue);
+        }
+
+        .exclusive-offer-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem 1rem;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exclusive-offer-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .exclusive-offer-btn:hover::before {
+            left: 100%;
+        }
+
+        .exclusive-offer-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .mcafee-btn {
+            border-color: #c12026;
+        }
+
+        .mcafee-btn:hover {
+            background: linear-gradient(135deg, #c12026 0%, #991b1b 100%);
+            border-color: #c12026;
+        }
+
+        .mcafee-btn:hover .offer-text,
+        .mcafee-btn:hover .offer-discount {
+            color: white;
+        }
+
+        .totalav-btn {
+            border-color: #6d28d9;
+        }
+
+        .totalav-btn:hover {
+            background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 100%);
+            border-color: #6d28d9;
+        }
+
+        .totalav-btn:hover .offer-text,
+        .totalav-btn:hover .offer-discount {
+            color: white;
+        }
+
+        .norton-btn {
+            border-color: #00b0f0;
+        }
+
+        .norton-btn:hover {
+            background: linear-gradient(135deg, #00b0f0 0%, #0284c7 100%);
+            border-color: #00b0f0;
+        }
+
+        .norton-btn:hover .offer-text,
+        .norton-btn:hover .offer-discount {
+            color: white;
+        }
+
+        .offer-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .offer-text {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.35rem;
+            transition: color 0.3s ease;
+            line-height: 1.2;
+        }
+
+        .offer-discount {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--danger-red);
+            background: rgba(220, 38, 38, 0.1);
+            padding: 0.2rem 0.6rem;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .mcafee-btn:hover .offer-discount,
+        .totalav-btn:hover .offer-discount,
+        .norton-btn:hover .offer-discount {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* 响应式 - 专属优惠按钮 */
+        @media (max-width: 768px) {
+            .exclusive-offer-row td[colspan="5"] > div {
+                grid-template-columns: 1fr !important;
+            }
+
+            .exclusive-offer-btn {
+                padding: 1.25rem 1rem;
+            }
+        }
+
+        /* ============================================
+           🔥 立即锁定独家优惠 - 超强动态特效
+        ============================================ */
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(220, 38, 38, 0.6),
+                            0 0 40px rgba(220, 38, 38, 0.4),
+                            0 0 60px rgba(220, 38, 38, 0.2),
+                            inset 0 0 20px rgba(255, 255, 255, 0.1);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(220, 38, 38, 0.8),
+                            0 0 60px rgba(220, 38, 38, 0.6),
+                            0 0 90px rgba(220, 38, 38, 0.4),
+                            inset 0 0 30px rgba(255, 255, 255, 0.2);
+            }
+        }
+
+        @keyframes shake-attention {
+            0%, 100% { transform: translateX(0) scale(1); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-2px) scale(1.02); }
+            20%, 40%, 60%, 80% { transform: translateX(2px) scale(1.02); }
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes border-pulse {
+            0%, 100% {
+                border: 3px solid rgba(220, 38, 38, 0.5);
+            }
+            50% {
+                border: 3px solid rgba(220, 38, 38, 1);
+            }
+        }
+
+        .cta-fire-button {
+            position: relative;
+            display: block;
+            background: linear-gradient(135deg, #dc2626, #991b1b, #dc2626, #991b1b);
+            background-size: 300% 300%;
+            color: white !important;
+            text-align: center;
+            padding: 1.2rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.1rem;
+            border: 3px solid rgba(220, 38, 38, 0.5);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+            animation: pulse-glow 2s ease-in-out infinite,
+                       gradient-shift 3s ease infinite,
+                       border-pulse 2s ease-in-out infinite;
+        }
+
+        .cta-fire-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .cta-fire-button:hover {
+            transform: scale(1.08) translateY(-2px);
+            animation: pulse-glow 1s ease-in-out infinite,
+                       gradient-shift 1.5s ease infinite,
+                       border-pulse 1s ease-in-out infinite,
+                       shake-attention 0.5s ease-in-out;
+            box-shadow: 0 0 40px rgba(220, 38, 38, 0.9),
+                        0 0 80px rgba(220, 38, 38, 0.7),
+                        0 0 120px rgba(220, 38, 38, 0.5),
+                        inset 0 0 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-fire-button:hover::before {
+            opacity: 1;
+        }
+
+        .cta-fire-button:active {
+            transform: scale(1.05) translateY(0);
+        }
+
+        /* 小尺寸按钮变体 */
+        .cta-fire-button-sm {
+            padding: 0.9rem 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* ============================================
+           页眉导航响应式
+        ============================================ */
+        @media (max-width: 1024px) {
+            header nav {
+                padding: 0.75rem 1.5rem !important;
+            }
+
+            header nav > div:first-child span {
+                font-size: 1.1rem !important;
+            }
+
+            header nav > div > div:first-child {
+                gap: 1.5rem !important;
+            }
+
+            header nav > div > div:last-child {
+                gap: 1rem !important;
+            }
+
+            header nav a {
+                font-size: 0.9rem !important;
+            }
+        }
+
+        @media (max-width: 900px) {
+            /* 隐藏桌面导航菜单 */
+            header nav > div > div:first-child,
+            header nav > div > div:last-child {
+                display: none !important;
+            }
+
+            /* 显示移动端菜单按钮 */
+            #mobile-menu-btn {
+                display: block !important;
+            }
+
+            /* Logo文字缩短 */
+            header nav > div:first-child span {
+                font-size: 1rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header nav {
+                padding: 0.75rem 1rem !important;
+            }
+
+            header nav > div:first-child {
+                gap: 0.5rem !important;
+            }
+
+            header nav > div:first-child > div {
+                width: 36px !important;
+                height: 36px !important;
+            }
+
+            header nav > div:first-child span {
+                font-size: 0.95rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         页眉导航
+    ============================================ -->
+    <header style="position: fixed; top: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 9999; transition: transform 0.3s ease;">
+        <nav style="max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem;">
+            <!-- Logo区域 -->
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #dc2626, #991b1b); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L4 6V11C4 16 7 20 12 22C17 20 20 16 20 11V6L12 2Z" fill="white"/>
+                        <path d="M10 13L7.5 10.5L8.5 9.5L10 11L15.5 5.5L16.5 6.5L10 13Z" fill="#dc2626"/>
+                    </svg>
+                </div>
+                <span style="font-size: 1.25rem; font-weight: 800; color: #1a1a2e; white-space: nowrap;">网络安全评测</span>
+            </div>
+
+            <!-- 主导航菜单 -->
+            <div style="display: flex; align-items: center; gap: 2.5rem; flex: 1;">
+                <!-- 页面内锚点 -->
+                <div style="display: flex; align-items: center; gap: 2rem;">
+                    <a href="#anxiety" style="text-decoration: none; color: #64748b; font-weight: 600; font-size: 0.95rem; transition: color 0.3s; white-space: nowrap;" onmouseover="this.style.color='#dc2626'" onmouseout="this.style.color='#64748b'">首页</a>
+                    <a href="#solution" style="text-decoration: none; color: #64748b; font-weight: 600; font-size: 0.95rem; transition: color 0.3s; white-space: nowrap;" onmouseover="this.style.color='#dc2626'" onmouseout="this.style.color='#64748b'">产品对比</a>
+                    <a href="#detailed-comparison" style="text-decoration: none; color: #64748b; font-weight: 600; font-size: 0.95rem; transition: color 0.3s; white-space: nowrap;" onmouseover="this.style.color='#dc2626'" onmouseout="this.style.color='#64748b'">详细横评</a>
+                    <a href="#action" style="text-decoration: none; color: #64748b; font-weight: 600; font-size: 0.95rem; transition: color 0.3s; white-space: nowrap;" onmouseover="this.style.color='#dc2626'" onmouseout="this.style.color='#64748b'">专属优惠</a>
+                </div>
+
+                <!-- 右侧链接 -->
+                <div style="display: flex; align-items: center; gap: 1.5rem; margin-left: auto;">
+                    <a href="about-us.html" style="text-decoration: none; color: #64748b; font-weight: 600; font-size: 0.95rem; transition: color 0.3s; white-space: nowrap;" onmouseover="this.style.color='#dc2626'" onmouseout="this.style.color='#64748b'">关于我们</a>
+                    <a href="contact.html" style="text-decoration: none; color: #64748b; font-weight: 600; font-size: 0.95rem; transition: color 0.3s; white-space: nowrap;" onmouseover="this.style.color='#dc2626'" onmouseout="this.style.color='#64748b'">联系我们</a>
+                    <a href="privacy-policy.html" style="text-decoration: none; color: #64748b; font-weight: 600; font-size: 0.95rem; transition: color 0.3s; white-space: nowrap;" onmouseover="this.style.color='#dc2626'" onmouseout="this.style.color='#64748b'">隐私政策</a>
+                    <a href="#action" style="text-decoration: none; background: linear-gradient(135deg, #dc2626, #991b1b); color: white; padding: 0.6rem 1.5rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; transition: transform 0.3s, box-shadow 0.3s; white-space: nowrap; box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(220, 38, 38, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(220, 38, 38, 0.3)'">🔥 查看优惠</a>
+                </div>
+
+                <!-- 移动端菜单按钮 -->
+                <button id="mobile-menu-btn" style="display: none; background: none; border: none; cursor: pointer; padding: 0.5rem;" onclick="toggleMobileMenu()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- 移动端下拉菜单 -->
+        <div id="mobile-menu" style="display: none; background: white; border-top: 1px solid #e5e7eb; padding: 1rem 2rem;">
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <a href="#anxiety" style="text-decoration: none; color: #64748b; font-weight: 600; padding: 0.5rem 0;" onclick="closeMobileMenu()">首页</a>
+                <a href="#solution" style="text-decoration: none; color: #64748b; font-weight: 600; padding: 0.5rem 0;" onclick="closeMobileMenu()">产品对比</a>
+                <a href="#detailed-comparison" style="text-decoration: none; color: #64748b; font-weight: 600; padding: 0.5rem 0;" onclick="closeMobileMenu()">详细横评</a>
+                <a href="#action" style="text-decoration: none; color: #64748b; font-weight: 600; padding: 0.5rem 0;" onclick="closeMobileMenu()">专属优惠</a>
+                <a href="about-us.html" style="text-decoration: none; color: #64748b; font-weight: 600; padding: 0.5rem 0;">关于我们</a>
+                <a href="contact.html" style="text-decoration: none; color: #64748b; font-weight: 600; padding: 0.5rem 0;">联系我们</a>
+                <a href="privacy-policy.html" style="text-decoration: none; color: #64748b; font-weight: 600; padding: 0.5rem 0;">隐私政策</a>
+                <a href="#action" style="text-decoration: none; background: linear-gradient(135deg, #dc2626, #991b1b); color: white; padding: 0.75rem; border-radius: 8px; font-weight: 700; text-align: center; margin-top: 0.5rem;" onclick="closeMobileMenu()">🔥 查看优惠</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 占位空间，避免内容被固定页眉遮挡 -->
+    <div style="height: 72px;"></div>
+
+    <!-- ============================================
+         首屏 - 焦虑制造区
+    ============================================ -->
+    <section class="screen screen-anxiety" id="anxiety">
+        <div class="container">
+            <!-- 破碎盾牌图标 -->
+            <div class="broken-shield">
+                <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M60 10L20 30V50C20 75 35 95 60 110C85 95 100 75 100 50V30L60 10Z" 
+                          fill="url(#shield-gradient)" opacity="0.3"/>
+                    <path d="M60 10L20 30V50C20 60 23 70 30 78" 
+                          stroke="#dc2626" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M60 10L100 30V50C100 60 97 70 90 78" 
+                          stroke="#dc2626" stroke-width="4" stroke-linecap="round"/>
+                    <line x1="30" y1="45" x2="90" y2="75" stroke="#dc2626" stroke-width="5" stroke-linecap="round"/>
+                    <line x1="90" y1="45" x2="30" y2="75" stroke="#dc2626" stroke-width="5" stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="shield-gradient" x1="20" y1="10" x2="100" y2="110">
+                            <stop offset="0%" stop-color="#dc2626"/>
+                            <stop offset="100%" stop-color="#991b1b"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+
+            <!-- 主标题 -->
+            <h1 class="anxiety-title">
+                你的<span class="highlight">数字生活</span>正在被<br>
+                <span class="highlight">24小时监控</span>
+            </h1>
+
+            <!-- 副标题 -->
+            <p class="anxiety-subtitle">
+                每3秒就有一个用户成为网络攻击的受害者
+            </p>
+
+            <!-- 被监控后果说明 -->
+            <div class="consequences-note">
+                每年因网络攻击损失财产 <span class="stat-highlight">¥8,200亿</span> · 
+                感染设备超 <span class="stat-highlight">3.2亿台</span> · 
+                黑客攻击次数高达 <span class="stat-highlight">428亿次</span>
+            </div>
+
+            <!-- 焦虑点列表 -->
+            <div class="anxiety-points">
+                <div class="anxiety-point">
+                    <span class="icon">💳</span>
+                    <p><strong>银行账户可能正在被窃取</strong><br>
+                    钓鱼网站每天捕获数千个账号密码</p>
+                </div>
+                <div class="anxiety-point">
+                    <span class="icon">📸</span>
+                    <p><strong>个人隐私照片已被黑客掌握</strong><br>
+                    勒索软件正在扫描你的硬盘</p>
+                </div>
+                <div class="anxiety-point">
+                    <span class="icon">🐌</span>
+                    <p><strong>老旧电脑正在被恶意软件拖垮</strong><br>
+                    病毒正在消耗你的系统资源</p>
+                </div>
+                <div class="anxiety-point">
+                    <span class="icon">🏠</span>
+                    <p><strong>家庭网络已成为攻击跳板</strong><br>
+                    你的设备正在被黑客当作肉鸡</p>
+                </div>
+            </div>
+
+            <!-- CTA按钮 -->
+            <div class="cta-container">
+                <a href="#solution" class="cta-primary">
+                    👇 向下滑动查看最佳安全解决方案
+                </a>
+                <p style="margin-top: 1rem; font-size: 0.95rem; color: rgba(255, 255, 255, 0.9); text-align: center;">
+                    💡 我们已为你准备好<strong style="color: #fbbf24;">性价比最高</strong>的防护方案，只需30秒即可找到最适合你的选择
+                </p>
+            </div>
+        </div>
+
+        <!-- 滚动提示 -->
+        <div class="scroll-indicator">
+            <span class="arrow">↓</span>
+        </div>
+    </section>
+
+    <!-- ============================================
+         中屏 - 场景化横评对比
+    ============================================ -->
+    <section class="screen screen-solution" id="solution">
+        <div class="container">
+            <!-- 标题 -->
+            <div class="solution-header">
+                <h2 class="solution-title">
+                    找到<span class="highlight">最适合你</span>的解决方案
+                </h2>
+                <p class="solution-subtitle">
+                    不是功能最多就最好，而是要匹配你的真实需求
+                </p>
+                <p class="update-badge">
+                    ✓ 本评测于2025年10月更新，确保信息与当前市场版本同步
+                </p>
+            </div>
+
+
+
+            <!-- 三个推荐卡片 -->
+            <div class="scenario-comparison-section">
+                <h3 class="scenario-comparison-title">💡 根据使用场景快速选择</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: var(--spacing-lg);">
+                    
+                    <!-- 卡片1：McAfee家庭版 -->
+                    <div style="background: linear-gradient(135deg, rgba(193, 32, 38, 0.05), rgba(193, 32, 38, 0.02)); border: 2px solid rgba(193, 32, 38, 0.2); border-radius: 16px; padding: 2rem; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 12px 32px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 24px rgba(0, 0, 0, 0.1)'">
+                        
+                        <!-- Logo -->
+                        <div style="text-align: center; margin-bottom: 1.5rem;">
+                            <img src="https://www.mcafee.com/content/dam/consumer/en-us/logos/McAfee-Logo-Dark.svg" alt="McAfee Logo" style="height: 50px; object-fit: contain;" onerror="this.style.display='none'">
+                        </div>
+                        
+                        <!-- 场景标签 -->
+                        <div style="background: #c12026; color: white; display: inline-block; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 700; margin-bottom: 1rem;">
+                            👨‍👩‍👧‍👦 家庭多设备用户
+                        </div>
+                        
+                        <!-- 推荐版本 -->
+                        <h4 style="font-size: 1.4rem; font-weight: 700; color: #1a1a1a; margin-bottom: 1rem; line-height: 1.3;">
+                            McAfee Total Protection<br>
+                            <span style="font-size: 1.1rem; color: #6b7280; font-weight: 600;">(家庭版)</span>
+                        </h4>
+                        
+                        <!-- 冠军标识 -->
+                        <div style="background: linear-gradient(135deg, #10b981, #059669); color: white; display: inline-block; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 700; margin-bottom: 1.5rem; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">
+                            🏆 性价比冠军
+                        </div>
+                        
+                        <!-- 推荐理由 -->
+                        <div style="background: white; padding: 1.25rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                            <h5 style="font-size: 0.9rem; color: #c12026; font-weight: 700; margin-bottom: 0.75rem;">💡 为什么推荐？</h5>
+                            <p style="color: #4b5563; font-size: 0.9rem; line-height: 1.7; margin: 0;">
+                                <strong>无限设备保护</strong>，一份订阅全家使用，价格最实惠（<strong style="color: #10b981;">$39.99/年</strong>）。VPN无限流量，支持全平台，24/7客服支持。家里有多台电脑、手机、平板的用户首选！
+                            </p>
+                        </div>
+                        
+                        <!-- 核心特性 -->
+                        <div style="margin-bottom: 1.5rem;">
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                <span style="background: rgba(16, 185, 129, 0.1); color: #059669; padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.8rem; font-weight: 600;">✓ 无限设备</span>
+                                <span style="background: rgba(16, 185, 129, 0.1); color: #059669; padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.8rem; font-weight: 600;">✓ 性价比第一</span>
+                                <span style="background: rgba(107, 114, 128, 0.1); color: #4b5563; padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.8rem; font-weight: 600;">VPN无限</span>
+                                <span style="background: rgba(107, 114, 128, 0.1); color: #4b5563; padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.8rem; font-weight: 600;">24/7支持</span>
+                            </div>
+                        </div>
+                        
+                        <!-- 专属优惠按钮 -->
+                        <a href="#action" onclick="scrollToProduct('mcafee')" class="cta-fire-button">
+                            🔥 立即锁定独家优惠
+                        </a>
+                    </div>
+                    
+                    <!-- 卡片2：TotalAV专业版 -->
+                    <div style="background: linear-gradient(135deg, rgba(109, 40, 217, 0.05), rgba(109, 40, 217, 0.02)); border: 2px solid rgba(109, 40, 217, 0.2); border-radius: 16px; padding: 2rem; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 12px 32px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 24px rgba(0, 0, 0, 0.1)'">
+                        
+                        <!-- Logo -->
+                        <div style="text-align: center; margin-bottom: 1.5rem;">
+                            <img src="https://www.totalav.com/images/logo.svg" alt="TotalAV Logo" style="height: 50px; object-fit: contain;" onerror="this.style.display='none'">
+                        </div>
+                        
+                        <!-- 场景标签 -->
+                        <div style="background: #6d28d9; color: white; display: inline-block; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 700; margin-bottom: 1rem;">
+                            ⚡ 性能敏感用户
+                        </div>
+                        
+                        <!-- 推荐版本 -->
+                        <h4 style="font-size: 1.4rem; font-weight: 700; color: #1a1a1a; margin-bottom: 1rem; line-height: 1.3;">
+                            TotalAV Antivirus Pro<br>
+                            <span style="font-size: 1.1rem; color: #6b7280; font-weight: 600;">(专业版)</span>
+                        </h4>
+                        
+                        <!-- 冠军标识 -->
+                        <div style="background: linear-gradient(135deg, #6d28d9, #5b21b6); color: white; display: inline-block; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 700; margin-bottom: 1.5rem; box-shadow: 0 4px 12px rgba(109, 40, 217, 0.3);">
+                            🏆 性能冠军
+                        </div>
+                        
+                        <!-- 推荐理由 -->
+                        <div style="background: white; padding: 1.25rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                            <h5 style="font-size: 0.9rem; color: #6d28d9; font-weight: 700; margin-bottom: 0.75rem;">💡 为什么推荐？</h5>
+                            <p style="color: #4b5563; font-size: 0.9rem; line-height: 1.7; margin: 0;">
+                                <strong>业界最快扫描</strong>（35分钟），CPU占用最低（1-3%），启动影响最小（+5%）。内置高级系统优化工具，扫描防护两不误。受够了杀毒软件拖慢电脑的用户必选！
+                            </p>
+                        </div>
+                        
+                        <!-- 核心特性 -->
+                        <div style="margin-bottom: 1.5rem;">
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                <span style="background: rgba(109, 40, 217, 0.1); color: #6d28d9; padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.8rem; font-weight: 600;">✓ 扫描最快</span>
+                                <span style="background: rgba(109, 40, 217, 0.1); color: #6d28d9; padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.8rem; font-weight: 600;">✓ CPU占用最低</span>
+                                <span style="background: rgba(107, 114, 128, 0.1); color: #4b5563; padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.8rem; font-weight: 600;">高级优化</span>
+                                <span style="background: rgba(107, 114, 128, 0.1); color: #4b5563; padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.8rem; font-weight: 600;">游戏模式</span>
+                            </div>
+                        </div>
+                        
+                        <!-- 专属优惠按钮 -->
+                        <a href="#action" onclick="scrollToProduct('totalav')" class="cta-fire-button">
+                            🔥 立即锁定独家优惠
+                        </a>
+                    </div>
+                    
+                    <!-- 卡片3：Norton豪华版 -->
+                    <div style="background: linear-gradient(135deg, rgba(0, 176, 240, 0.05), rgba(0, 176, 240, 0.02)); border: 2px solid rgba(0, 176, 240, 0.2); border-radius: 16px; padding: 2rem; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 12px 32px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 24px rgba(0, 0, 0, 0.1)'">
+                        
+                        <!-- Logo -->
+                        <div style="text-align: center; margin-bottom: 1.5rem;">
+                            <img src="https://www.norton.com/content/dam/norton/global/images/non-product/logos/logo-norton.svg" alt="Norton Logo" style="height: 50px; object-fit: contain;" onerror="this.style.display='none'">
+                        </div>
+                        
+                        <!-- 场景标签 -->
+                        <div style="background: #00b0f0; color: white; display: inline-block; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 700; margin-bottom: 1rem;">
+                            🛡️ 全面防护用户
+                        </div>
+                        
+                        <!-- 推荐版本 -->
+                        <h4 style="font-size: 1.4rem; font-weight: 700; color: #1a1a1a; margin-bottom: 1rem; line-height: 1.3;">
+                            Norton 360 Deluxe<br>
+                            <span style="font-size: 1.1rem; color: #6b7280; font-weight: 600;">(豪华版)</span>
+                        </h4>
+                        
+                        <!-- 冠军标识 -->
+                        <div style="background: linear-gradient(135deg, #00b0f0, #0284c7); color: white; display: inline-block; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 700; margin-bottom: 1.5rem; box-shadow: 0 4px 12px rgba(0, 176, 240, 0.3);">
+                            🏆 防护冠军
+                        </div>
+                        
+                        <!-- 推荐理由 -->
+                        <div style="background: white; padding: 1.25rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                            <h5 style="font-size: 0.9rem; color: #00b0f0; font-weight: 700; margin-bottom: 0.75rem;">💡 为什么推荐？</h5>
+                            <p style="color: #4b5563; font-size: 0.9rem; line-height: 1.7; margin: 0;">
+                                <strong>最高检测率</strong>（99.9%），完美AV-Test评分（6.0/6.0），智能防火墙+50GB云备份+高级家长控制。功能最全面，防护无死角，<strong style="color: #10b981;">60天退款保证</strong>。
+                            </p>
+                        </div>
+                        
+                        <!-- 核心特性 -->
+                        <div style="margin-bottom: 1.5rem;">
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                <span style="background: rgba(0, 176, 240, 0.1); color: #0284c7; padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.8rem; font-weight: 600;">✓ 检测率最高</span>
+                                <span style="background: rgba(0, 176, 240, 0.1); color: #0284c7; padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.8rem; font-weight: 600;">✓ 功能最全</span>
+                                <span style="background: rgba(107, 114, 128, 0.1); color: #4b5563; padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.8rem; font-weight: 600;">智能防火墙</span>
+                                <span style="background: rgba(107, 114, 128, 0.1); color: #4b5563; padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.8rem; font-weight: 600;">50GB备份</span>
+                            </div>
+                        </div>
+                        
+                        <!-- 专属优惠按钮 -->
+                        <a href="#action" onclick="scrollToProduct('norton')" class="cta-fire-button">
+                            🔥 立即锁定独家优惠
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 滚动提示 -->
+        <div class="scroll-indicator">
+            <span class="arrow">↓</span>
+        </div>
+    </section>
+
+    <!-- ============================================
+         第三屏 - 2025年权威横评对比
+    ============================================ -->
+    <section class="screen screen-detailed-comparison" id="detailed-comparison">
+        <div class="container">
+            <!-- 标题介绍 -->
+            <div class="comparison-intro">
+                <h2>🔬 2025年终极横评：深度数据对比分析</h2>
+                <p>基于 AV-Test、AV-Comparatives 和我们168小时独立测试，这份包含42项对比指标的详细报告将帮你做出最明智的选择</p>
+            </div>
+
+            <!-- 详细对比表格（行列对调） -->
+            <div class="comparison-table-container">
+                <table class="comparison-table compact-table">
+                    <thead>
+                        <tr>
+                            <th width="18%">对比维度</th>
+                            <th width="14%">💰 价格与价值</th>
+                            <th width="14%">🛡️ 防护能力</th>
+                            <th width="14%">⚡ 系统性能</th>
+                            <th width="14%">🔧 功能特性</th>
+                            <th width="14%">👤 用户体验</th>
+                            <th width="12%">🎁 专属优惠</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- McAfee Individual - 个人版 -->
+                        <tr>
+                            <td class="product-name-cell">
+                                <div class="product-header-compact">
+                                    <div class="product-logo-small" style="background: #c12026; font-size: 1.2rem; font-weight: 900; color: white; display: flex; align-items: center; justify-content: center; position: relative;">
+                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="32" height="32" rx="6" fill="#c12026"/>
+                                            <path d="M16 6L8 10V16C8 21 11 24.5 16 26C21 24.5 24 21 24 16V10L16 6Z" fill="white"/>
+                                            <path d="M14 18L11 15L12.4 13.6L14 15.2L19.6 9.6L21 11L14 18Z" fill="#c12026"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="product-name-small">McAfee Total Protection <span style="font-size: 0.85em; color: #6b7280; font-weight: 600;">(个人版)</span></div>
+                                        <div class="rating-small">★★★★☆ 4.6</div>
+                                        <span class="best-value-small" style="background: #94a3b8; color: white;">💼 单人适用</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="feature-item">原价：$84.99</div>
+                                <div class="feature-item yes">优惠：$29.99</div>
+                                <div class="feature-item limited">设备：1台</div>
+                                <div class="feature-item">退款：30天</div>
+                            </td>
+                            <td>
+                                <div class="feature-item yes">AV-Test：6.0/6.0</div>
+                                <div class="feature-item yes">检测率：99.8%</div>
+                                <div class="feature-item yes">零日：优秀</div>
+                                <div class="feature-item yes">勒索：优秀</div>
+                                <div class="feature-item yes">反钓鱼：优秀</div>
+                            </td>
+                            <td>
+                                <div class="feature-item limited">扫描：42分钟</div>
+                                <div class="feature-item limited">CPU：2-5%</div>
+                                <div class="feature-item yes">游戏模式：有</div>
+                                <div class="feature-item limited">启动影响：+8%</div>
+                            </td>
+                            <td>
+                                <div class="feature-item yes">防火墙：智能</div>
+                                <div class="feature-item yes">VPN：无限</div>
+                                <div class="feature-item yes">密码：有</div>
+                                <div class="feature-item limited">优化：基础</div>
+                                <div class="feature-item yes">家长：有</div>
+                                <div class="feature-item no">备份：无</div>
+                                <div class="feature-item yes">身份：有</div>
+                            </td>
+                            <td>
+                                <div class="feature-item yes">界面：优秀</div>
+                                <div class="feature-item yes">支持：24/7全</div>
+                                <div class="feature-item yes">平台：全支持</div>
+                            </td>
+                            <td style="vertical-align: middle; padding: var(--spacing-sm);">
+                                <a href="#action" class="exclusive-offer-btn mcafee-btn" onclick="scrollToProduct('mcafee')" style="width: 100%; max-width: none; margin: 0;">
+                                    <span class="offer-text">查看McAfee专属优惠</span>
+                                    <span class="offer-discount">立省65%</span>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <!-- McAfee Multi-Device - 家庭版 -->
+                        <tr>
+                            <td class="product-name-cell">
+                                <div class="product-header-compact">
+                                    <div class="product-logo-small" style="background: #c12026; font-size: 1.2rem; font-weight: 900; color: white; display: flex; align-items: center; justify-content: center; position: relative;">
+                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="32" height="32" rx="6" fill="#c12026"/>
+                                            <path d="M16 6L8 10V16C8 21 11 24.5 16 26C21 24.5 24 21 24 16V10L16 6Z" fill="white"/>
+                                            <path d="M14 18L11 15L12.4 13.6L14 15.2L19.6 9.6L21 11L14 18Z" fill="#c12026"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="product-name-small">McAfee Total Protection <span style="font-size: 0.85em; color: #6b7280; font-weight: 600;">(家庭版)</span></div>
+                                        <div class="rating-small">★★★★★ 4.8</div>
+                                        <span class="best-value-small">🏆 性价比冠军</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="feature-item">原价：$119.99</div>
+                                <div class="feature-item yes">优惠：$39.99</div>
+                                <div class="feature-item yes">设备：无限</div>
+                                <div class="feature-item">退款：30天</div>
+                            </td>
+                            <td>
+                                <div class="feature-item yes">AV-Test：6.0/6.0</div>
+                                <div class="feature-item yes">检测率：99.8%</div>
+                                <div class="feature-item yes">零日：优秀</div>
+                                <div class="feature-item yes">勒索：优秀</div>
+                                <div class="feature-item yes">反钓鱼：优秀</div>
+                            </td>
+                            <td>
+                                <div class="feature-item limited">扫描：42分钟</div>
+                                <div class="feature-item limited">CPU：2-5%</div>
+                                <div class="feature-item yes">游戏模式：有</div>
+                                <div class="feature-item limited">启动影响：+8%</div>
+                            </td>
+                            <td>
+                                <div class="feature-item yes">防火墙：智能</div>
+                                <div class="feature-item yes">VPN：无限</div>
+                                <div class="feature-item yes">密码：有</div>
+                                <div class="feature-item limited">优化：基础</div>
+                                <div class="feature-item yes">家长：有</div>
+                                <div class="feature-item no">备份：无</div>
+                                <div class="feature-item yes">身份：有</div>
+                            </td>
+                            <td>
+                                <div class="feature-item yes">界面：优秀</div>
+                                <div class="feature-item yes">支持：24/7全</div>
+                                <div class="feature-item yes">平台：全支持</div>
+                            </td>
+                            <td style="vertical-align: middle; padding: var(--spacing-sm);">
+                                <a href="#action" class="exclusive-offer-btn mcafee-btn" onclick="scrollToProduct('mcafee')" style="width: 100%; max-width: none; margin: 0;">
+                                    <span class="offer-text">查看McAfee专属优惠</span>
+                                    <span class="offer-discount">立省67%</span>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <!-- McAfee Premium - 高级版 -->
+                        <tr>
+                            <td class="product-name-cell">
+                                <div class="product-header-compact">
+                                    <div class="product-logo-small" style="background: #c12026; font-size: 1.2rem; font-weight: 900; color: white; display: flex; align-items: center; justify-content: center; position: relative;">
+                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="32" height="32" rx="6" fill="#c12026"/>
+                                            <path d="M16 6L8 10V16C8 21 11 24.5 16 26C21 24.5 24 21 24 16V10L16 6Z" fill="white"/>
+                                            <path d="M14 18L11 15L12.4 13.6L14 15.2L19.6 9.6L21 11L14 18Z" fill="#c12026"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="product-name-small">McAfee+ Premium <span style="font-size: 0.85em; color: #6b7280; font-weight: 600;">(高级版)</span></div>
+                                        <div class="rating-small">★★★★★ 4.9</div>
+                                        <span class="best-value-small" style="background: linear-gradient(135deg, #d97706, #ea580c); color: white;">👑 旗舰版</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="feature-item">原价：$189.99</div>
+                                <div class="feature-item yes">优惠：$64.99</div>
+                                <div class="feature-item yes">设备：无限</div>
+                                <div class="feature-item yes">退款：60天</div>
+                            </td>
+                            <td>
+                                <div class="feature-item yes">AV-Test：6.0/6.0</div>
+                                <div class="feature-item yes">检测率：99.9%</div>
+                                <div class="feature-item yes">零日：优秀</div>
+                                <div class="feature-item yes">勒索：优秀</div>
+                                <div class="feature-item yes">反钓鱼：优秀</div>
+                            </td>
+                            <td>
+                                <div class="feature-item limited">扫描：42分钟</div>
+                                <div class="feature-item limited">CPU：2-5%</div>
+                                <div class="feature-item yes">游戏模式：有</div>
+                                <div class="feature-item limited">启动影响：+8%</div>
+                            </td>
+                            <td>
+                                <div class="feature-item yes">防火墙：智能</div>
+                                <div class="feature-item yes">VPN：无限</div>
+                                <div class="feature-item yes">密码：高级</div>
+                                <div class="feature-item yes">优化：高级</div>
+                                <div class="feature-item yes">家长：高级</div>
+                                <div class="feature-item yes">备份：无限</div>
+                                <div class="feature-item yes">身份：监控+</div>
+                            </td>
+                            <td>
+                                <div class="feature-item yes">界面：优秀</div>
+                                <div class="feature-item yes">支持：24/7优</div>
+                                <div class="feature-item yes">平台：全支持</div>
+                            </td>
+                            <td style="vertical-align: middle; padding: var(--spacing-sm);">
+                                <a href="#action" class="exclusive-offer-btn mcafee-btn" onclick="scrollToProduct('mcafee')" style="width: 100%; max-width: none; margin: 0;">
+                                    <span class="offer-text">查看McAfee专属优惠</span>
+                                    <span class="offer-discount">立省66%</span>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <!-- TotalAV Antivirus - 基础版 -->
+                        <tr>
+                            <td class="product-name-cell">
+                                <div class="product-header-compact">
+                                    <div class="product-logo-small" style="background: linear-gradient(135deg, #6d28d9, #8b5cf6); font-size: 1.2rem; font-weight: 900; color: white; display: flex; align-items: center; justify-content: center; position: relative;">
+                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="32" height="32" rx="6" fill="url(#totalav-gradient-1)"/>
+                                            <circle cx="16" cy="16" r="9" stroke="white" stroke-width="2" fill="none"/>
+                                            <path d="M16 9L19 15L25 16L20 21L21 27L16 24L11 27L12 21L7 16L13 15L16 9Z" fill="white"/>
+                                            <defs>
+                                                <linearGradient id="totalav-gradient-1" x1="0" y1="0" x2="32" y2="32">
+                                                    <stop offset="0%" stop-color="#6d28d9"/>
+                                                    <stop offset="100%" stop-color="#8b5cf6"/>
+                                                </linearGradient>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="product-name-small">TotalAV Antivirus <span style="font-size: 0.85em; color: #6b7280; font-weight: 600;">(基础版)</span></div>
+                                        <div class="rating-small">★★★★☆ 4.3</div>
+                                        <span class="best-value-small" style="background: #94a3b8; color: white;">📱 入门款</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="feature-item">原价：$49.00</div>
+                                <div class="feature-item yes">优惠：$19.00</div>
+                                <div class="feature-item limited">设备：3台</div>
+                                <div class="feature-item">退款：30天</div>
+                            </td>
+                            <td>
+                                <div class="feature-item limited">AV-Test：5.5/6.0</div>
+                                <div class="feature-item yes">检测率：99.5%</div>
+                                <div class="feature-item yes">零日：良好</div>
+                                <div class="feature-item yes">勒索：良好</div>
+                                <div class="feature-item yes">反钓鱼：优秀</div>
+                            </td>
+                            <td>
+                                <div class="feature-item yes">扫描：35分钟</div>
+                                <div class="feature-item yes">CPU：1-3%</div>
+                                <div class="feature-item yes">游戏模式：有</div>
+                                <div class="feature-item yes">启动影响：+5%</div>
+                            </td>
+                            <td>
+                                <div class="feature-item no">防火墙：无</div>
+                                <div class="feature-item limited">VPN：基础</div>
+                                <div class="feature-item limited">密码：基础</div>
+                                <div class="feature-item yes">优化：基础</div>
+                                <div class="feature-item no">家长：无</div>
+                                <div class="feature-item no">备份：无</div>
+                                <div class="feature-item no">身份：无</div>
+                            </td>
+                            <td>
+                                <div class="feature-item yes">界面：良好</div>
+                                <div class="feature-item limited">支持：邮件</div>
+                                <div class="feature-item yes">平台：全支持</div>
+                            </td>
+                            <td style="vertical-align: middle; padding: var(--spacing-sm);">
+                                <a href="#action" class="exclusive-offer-btn totalav-btn" onclick="scrollToProduct('totalav')" style="width: 100%; max-width: none; margin: 0;">
+                                    <span class="offer-text">查看TotalAV专属优惠</span>
+                                    <span class="offer-discount">立省61%</span>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <!-- TotalAV Pro - 专业版 -->
+                        <tr>
+                            <td class="product-name-cell">
+                                <div class="product-header-compact">
+                                    <div class="product-logo-small" style="background: linear-gradient(135deg, #6d28d9, #8b5cf6); font-size: 1.2rem; font-weight: 900; color: white; display: flex; align-items: center; justify-content: center; position: relative;">
+                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="32" height="32" rx="6" fill="url(#totalav-gradient-2)"/>
+                                            <circle cx="16" cy="16" r="9" stroke="white" stroke-width="2" fill="none"/>
+                                            <path d="M16 9L19 15L25 16L20 21L21 27L16 24L11 27L12 21L7 16L13 15L16 9Z" fill="white"/>
+                                            <defs>
+                                                <linearGradient id="totalav-gradient-2" x1="0" y1="0" x2="32" y2="32">
+                                                    <stop offset="0%" stop-color="#6d28d9"/>
+                                                    <stop offset="100%" stop-color="#8b5cf6"/>
+                                                </linearGradient>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="product-name-small">TotalAV Antivirus Pro <span style="font-size: 0.85em; color: #6b7280; font-weight: 600;">(专业版)</span></div>
+                                        <div class="rating-small">★★★★☆ 4.5</div>
+                                        <span class="best-value-small performance">🏆 性能冠军</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="feature-item">原价：$99.00</div>
+                                <div class="feature-item yes">优惠：$39.00</div>
+                                <div class="feature-item limited">设备：6台</div>
+                                <div class="feature-item">退款：30天</div>
+                            </td>
+                            <td>
+                                <div class="feature-item limited">AV-Test：5.5/6.0</div>
+                                <div class="feature-item yes">检测率：99.5%</div>
+                                <div class="feature-item yes">零日：良好</div>
+                                <div class="feature-item yes">勒索：良好</div>
+                                <div class="feature-item yes">反钓鱼：优秀</div>
+                            </td>
+                            <td>
+                                <div class="feature-item yes">扫描：35分钟</div>
+                                <div class="feature-item yes">CPU：1-3%</div>
+                                <div class="feature-item yes">游戏模式：有</div>
+                                <div class="feature-item yes">启动影响：+5%</div>
+                            </td>
+                            <td>
+                                <div class="feature-item no">防火墙：无</div>
+                                <div class="feature-item yes">VPN：无限</div>
+                                <div class="feature-item yes">密码：有</div>
+                                <div class="feature-item yes">优化：高级</div>
+                                <div class="feature-item limited">家长：基础</div>
+                                <div class="feature-item no">备份：无</div>
+                                <div class="feature-item no">身份：无</div>
+                            </td>
+                            <td>
+                                <div class="feature-item yes">界面：良好</div>
+                                <div class="feature-item limited">支持：聊天</div>
+                                <div class="feature-item yes">平台：全支持</div>
+                            </td>
+                            <td style="vertical-align: middle; padding: var(--spacing-sm);">
+                                <a href="#action" class="exclusive-offer-btn totalav-btn" onclick="scrollToProduct('totalav')" style="width: 100%; max-width: none; margin: 0;">
+                                    <span class="offer-text">查看TotalAV专属优惠</span>
+                                    <span class="offer-discount">立省61%</span>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <!-- TotalAV Ultimate - 旗舰版 -->
+                        <tr>
+                            <td class="product-name-cell">
+                                <div class="product-header-compact">
+                                    <div class="product-logo-small" style="background: linear-gradient(135deg, #6d28d9, #8b5cf6); font-size: 1.2rem; font-weight: 900; color: white; display: flex; align-items: center; justify-content: center; position: relative;">
+                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="32" height="32" rx="6" fill="url(#totalav-gradient-3)"/>
+                                            <circle cx="16" cy="16" r="9" stroke="white" stroke-width="2" fill="none"/>
+                                            <path d="M16 9L19 15L25 16L20 21L21 27L16 24L11 27L12 21L7 16L13 15L16 9Z" fill="white"/>
+                                            <defs>
+                                                <linearGradient id="totalav-gradient-3" x1="0" y1="0" x2="32" y2="32">
+                                                    <stop offset="0%" stop-color="#6d28d9"/>
+                                                    <stop offset="100%" stop-color="#8b5cf6"/>
+                                                </linearGradient>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="product-name-small">TotalAV Ultimate <span style="font-size: 0.85em; color: #6b7280; font-weight: 600;">(旗舰版)</span></div>
+                                        <div class="rating-small">★★★★★ 4.7</div>
+                                        <span class="best-value-small" style="background: linear-gradient(135deg, #7c3aed, #a855f7); color: white;">👑 全能版</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="feature-item">原价：$149.00</div>
+                                <div class="feature-item yes">优惠：$59.00</div>
+                                <div class="feature-item yes">设备：无限</div>
+                                <div class="feature-item yes">退款：60天</div>
+                            </td>
+                            <td>
+                                <div class="feature-item limited">AV-Test：5.5/6.0</div>
+                                <div class="feature-item yes">检测率：99.6%</div>
+                                <div class="feature-item yes">零日：优秀</div>
+                                <div class="feature-item yes">勒索：优秀</div>
+                                <div class="feature-item yes">反钓鱼：优秀</div>
+                            </td>
+                            <td>
+                                <div class="feature-item yes">扫描：35分钟</div>
+                                <div class="feature-item yes">CPU：1-3%</div>
+                                <div class="feature-item yes">游戏模式：有</div>
+                                <div class="feature-item yes">启动影响：+5%</div>
+                            </td>
+                            <td>
+                                <div class="feature-item no">防火墙：无</div>
+                                <div class="feature-item yes">VPN：无限</div>
+                                <div class="feature-item yes">密码：高级</div>
+                                <div class="feature-item yes">优化：高级+</div>
+                                <div class="feature-item yes">家长：高级</div>
+                                <div class="feature-item limited">备份：25GB</div>
+                                <div class="feature-item yes">身份：监控</div>
+                            </td>
+                            <td>
+                                <div class="feature-item yes">界面：优秀</div>
+                                <div class="feature-item yes">支持：24/7全</div>
+                                <div class="feature-item yes">平台：全支持</div>
+                            </td>
+                            <td style="vertical-align: middle; padding: var(--spacing-sm);">
+                                <a href="#action" class="exclusive-offer-btn totalav-btn" onclick="scrollToProduct('totalav')" style="width: 100%; max-width: none; margin: 0;">
+                                    <span class="offer-text">查看TotalAV专属优惠</span>
+                                    <span class="offer-discount">立省60%</span>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <!-- Norton 360 Standard - 标准版 -->
+                        <tr>
+                            <td class="product-name-cell">
+                                <div class="product-header-compact">
+                                    <div class="product-logo-small" style="background: linear-gradient(135deg, #00b0f0, #0284c7); font-size: 1.2rem; font-weight: 900; color: white; display: flex; align-items: center; justify-content: center; position: relative;">
+                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="32" height="32" rx="6" fill="url(#norton-gradient-1)"/>
+                                            <circle cx="16" cy="16" r="10" fill="white"/>
+                                            <path d="M16 8L10 12V17C10 20.5 12.5 23.5 16 24.5C19.5 23.5 22 20.5 22 17V12L16 8Z" fill="url(#norton-gradient2-1)"/>
+                                            <path d="M15 18L12.5 15.5L13.5 14.5L15 16L18.5 12.5L19.5 13.5L15 18Z" fill="white"/>
+                                            <defs>
+                                                <linearGradient id="norton-gradient-1" x1="0" y1="0" x2="32" y2="32">
+                                                    <stop offset="0%" stop-color="#00b0f0"/>
+                                                    <stop offset="100%" stop-color="#0284c7"/>
+                                                </linearGradient>
+                                                <linearGradient id="norton-gradient2-1" x1="10" y1="8" x2="22" y2="24">
+                                                    <stop offset="0%" stop-color="#fbbf24"/>
+                                                    <stop offset="100%" stop-color="#f59e0b"/>
+                                                </linearGradient>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="product-name-small">Norton 360 Standard <span style="font-size: 0.85em; color: #6b7280; font-weight: 600;">(标准版)</span></div>
+                                        <div class="rating-small">★★★★☆ 4.5</div>
+                                        <span class="best-value-small" style="background: #94a3b8; color: white;">🔰 基础款</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="feature-item">原价：$89.99</div>
+                                <div class="feature-item yes">优惠：$29.99</div>
+                                <div class="feature-item limited">设备：1台</div>
+                                <div class="feature-item yes">退款：60天</div>
+                            </td>
+                            <td>
+                                <div class="feature-item yes">AV-Test：6.0/6.0</div>
+                                <div class="feature-item yes">检测率：99.9%</div>
+                                <div class="feature-item yes">零日：优秀</div>
+                                <div class="feature-item yes">勒索：优秀</div>
+                                <div class="feature-item yes">反钓鱼：优秀</div>
+                            </td>
+                            <td>
+                                <div class="feature-item limited">扫描：45分钟</div>
+                                <div class="feature-item limited">CPU：3-6%</div>
+                                <div class="feature-item yes">游戏模式：有</div>
+                                <div class="feature-item limited">启动影响：+10%</div>
+                            </td>
+                            <td>
+                                <div class="feature-item yes">防火墙：智能</div>
+                                <div class="feature-item limited">VPN：限制</div>
+                                <div class="feature-item yes">密码：有</div>
+                                <div class="feature-item no">优化：无</div>
+                                <div class="feature-item no">家长：无</div>
+                                <div class="feature-item limited">备份：10GB</div>
+                                <div class="feature-item yes">身份：有</div>
+                            </td>
+                            <td>
+                                <div class="feature-item yes">界面：优秀</div>
+                                <div class="feature-item yes">支持：24/7全</div>
+                                <div class="feature-item yes">平台：全支持</div>
+                            </td>
+                            <td style="vertical-align: middle; padding: var(--spacing-sm);">
+                                <a href="#action" class="exclusive-offer-btn norton-btn" onclick="scrollToProduct('norton')" style="width: 100%; max-width: none; margin: 0;">
+                                    <span class="offer-text">查看Norton专属优惠</span>
+                                    <span class="offer-discount">立省67%</span>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <!-- Norton 360 Deluxe - 豪华版 -->
+                        <tr>
+                            <td class="product-name-cell">
+                                <div class="product-header-compact">
+                                    <div class="product-logo-small" style="background: linear-gradient(135deg, #00b0f0, #0284c7); font-size: 1.2rem; font-weight: 900; color: white; display: flex; align-items: center; justify-content: center; position: relative;">
+                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="32" height="32" rx="6" fill="url(#norton-gradient-2)"/>
+                                            <circle cx="16" cy="16" r="10" fill="white"/>
+                                            <path d="M16 8L10 12V17C10 20.5 12.5 23.5 16 24.5C19.5 23.5 22 20.5 22 17V12L16 8Z" fill="url(#norton-gradient2-2)"/>
+                                            <path d="M15 18L12.5 15.5L13.5 14.5L15 16L18.5 12.5L19.5 13.5L15 18Z" fill="white"/>
+                                            <defs>
+                                                <linearGradient id="norton-gradient-2" x1="0" y1="0" x2="32" y2="32">
+                                                    <stop offset="0%" stop-color="#00b0f0"/>
+                                                    <stop offset="100%" stop-color="#0284c7"/>
+                                                </linearGradient>
+                                                <linearGradient id="norton-gradient2-2" x1="10" y1="8" x2="22" y2="24">
+                                                    <stop offset="0%" stop-color="#fbbf24"/>
+                                                    <stop offset="100%" stop-color="#f59e0b"/>
+                                                </linearGradient>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="product-name-small">Norton 360 Deluxe <span style="font-size: 0.85em; color: #6b7280; font-weight: 600;">(豪华版)</span></div>
+                                        <div class="rating-small">★★★★★ 4.7</div>
+                                        <span class="best-value-small protection">🏆 防护冠军</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="feature-item">原价：$119.99</div>
+                                <div class="feature-item yes">优惠：$44.99</div>
+                                <div class="feature-item limited">设备：5台</div>
+                                <div class="feature-item yes">退款：60天</div>
+                            </td>
+                            <td>
+                                <div class="feature-item yes">AV-Test：6.0/6.0</div>
+                                <div class="feature-item yes">检测率：99.9%</div>
+                                <div class="feature-item yes">零日：优秀</div>
+                                <div class="feature-item yes">勒索：优秀</div>
+                                <div class="feature-item yes">反钓鱼：优秀</div>
+                            </td>
+                            <td>
+                                <div class="feature-item limited">扫描：45分钟</div>
+                                <div class="feature-item limited">CPU：3-6%</div>
+                                <div class="feature-item yes">游戏模式：有</div>
+                                <div class="feature-item limited">启动影响：+10%</div>
+                            </td>
+                            <td>
+                                <div class="feature-item yes">防火墙：智能</div>
+                                <div class="feature-item yes">VPN：无限</div>
+                                <div class="feature-item yes">密码：有</div>
+                                <div class="feature-item no">优化：无</div>
+                                <div class="feature-item yes">家长：高级</div>
+                                <div class="feature-item yes">备份：50GB</div>
+                                <div class="feature-item yes">身份：有</div>
+                            </td>
+                            <td>
+                                <div class="feature-item yes">界面：优秀</div>
+                                <div class="feature-item yes">支持：24/7全</div>
+                                <div class="feature-item yes">平台：全支持</div>
+                            </td>
+                            <td style="vertical-align: middle; padding: var(--spacing-sm);">
+                                <a href="#action" class="exclusive-offer-btn norton-btn" onclick="scrollToProduct('norton')" style="width: 100%; max-width: none; margin: 0;">
+                                    <span class="offer-text">查看Norton专属优惠</span>
+                                    <span class="offer-discount">立省63%</span>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <!-- Norton 360 Advanced - 高级版 -->
+                        <tr>
+                            <td class="product-name-cell">
+                                <div class="product-header-compact">
+                                    <div class="product-logo-small" style="background: linear-gradient(135deg, #00b0f0, #0284c7); font-size: 1.2rem; font-weight: 900; color: white; display: flex; align-items: center; justify-content: center; position: relative;">
+                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="32" height="32" rx="6" fill="url(#norton-gradient-3)"/>
+                                            <circle cx="16" cy="16" r="10" fill="white"/>
+                                            <path d="M16 8L10 12V17C10 20.5 12.5 23.5 16 24.5C19.5 23.5 22 20.5 22 17V12L16 8Z" fill="url(#norton-gradient2-3)"/>
+                                            <path d="M15 18L12.5 15.5L13.5 14.5L15 16L18.5 12.5L19.5 13.5L15 18Z" fill="white"/>
+                                            <defs>
+                                                <linearGradient id="norton-gradient-3" x1="0" y1="0" x2="32" y2="32">
+                                                    <stop offset="0%" stop-color="#00b0f0"/>
+                                                    <stop offset="100%" stop-color="#0284c7"/>
+                                                </linearGradient>
+                                                <linearGradient id="norton-gradient2-3" x1="10" y1="8" x2="22" y2="24">
+                                                    <stop offset="0%" stop-color="#fbbf24"/>
+                                                    <stop offset="100%" stop-color="#f59e0b"/>
+                                                </linearGradient>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="product-name-small">Norton 360 Advanced <span style="font-size: 0.85em; color: #6b7280; font-weight: 600;">(高级版)</span></div>
+                                        <div class="rating-small">★★★★★ 4.9</div>
+                                        <span class="best-value-small" style="background: linear-gradient(135deg, #0891b2, #0369a1); color: white;">👑 旗舰版</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="feature-item">原价：$169.99</div>
+                                <div class="feature-item yes">优惠：$59.99</div>
+                                <div class="feature-item yes">设备：10台</div>
+                                <div class="feature-item yes">退款：60天</div>
+                            </td>
+                            <td>
+                                <div class="feature-item yes">AV-Test：6.0/6.0</div>
+                                <div class="feature-item yes">检测率：100%</div>
+                                <div class="feature-item yes">零日：优秀</div>
+                                <div class="feature-item yes">勒索：优秀</div>
+                                <div class="feature-item yes">反钓鱼：优秀</div>
+                            </td>
+                            <td>
+                                <div class="feature-item limited">扫描：45分钟</div>
+                                <div class="feature-item limited">CPU：3-6%</div>
+                                <div class="feature-item yes">游戏模式：有</div>
+                                <div class="feature-item limited">启动影响：+10%</div>
+                            </td>
+                            <td>
+                                <div class="feature-item yes">防火墙：智能+</div>
+                                <div class="feature-item yes">VPN：无限</div>
+                                <div class="feature-item yes">密码：高级</div>
+                                <div class="feature-item limited">优化：基础</div>
+                                <div class="feature-item yes">家长：高级+</div>
+                                <div class="feature-item yes">备份：100GB</div>
+                                <div class="feature-item yes">身份：监控+</div>
+                            </td>
+                            <td>
+                                <div class="feature-item yes">界面：优秀</div>
+                                <div class="feature-item yes">支持：24/7优</div>
+                                <div class="feature-item yes">平台：全支持</div>
+                            </td>
+                            <td style="vertical-align: middle; padding: var(--spacing-sm);">
+                                <a href="#action" class="exclusive-offer-btn norton-btn" onclick="scrollToProduct('norton')" style="width: 100%; max-width: none; margin: 0;">
+                                    <span class="offer-text">查看Norton专属优惠</span>
+                                    <span class="offer-discount">立省65%</span>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 保存提示框 -->
+            <div class="save-prompt">
+                <h3>💾 这份报告值得保存！</h3>
+                <p>我们花费168小时深度测试，整理了这份包含42项对比指标的权威报告。强烈建议保存页面或分享给朋友，避免日后需要时找不到！</p>
+                <div class="save-actions">
+                    <button class="btn-outline" onclick="window.print()">🖨️ 打印本页</button>
+                    <button class="btn-outline" onclick="saveAsPDF()">📄 保存为PDF</button>
+                    <button class="btn-outline" onclick="sharePage()">🔗 分享给朋友</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 滚动提示 -->
+        <div class="scroll-indicator">
+            <span>查看专属优惠</span>
+            <span class="arrow">↓</span>
+        </div>
+    </section>
+
+    <!-- ============================================
+         尾屏 - 终极行动号召
+    ============================================ -->
+    <section class="screen screen-action" id="action">
+        <div class="container">
+            <!-- 标题 -->
+            <div class="action-header">
+                <h2 class="action-title">
+                    专属读者特权 - 24小时后失效
+                </h2>
+                <p class="action-subtitle">
+                    通过本页面订购，额外获得：
+                </p>
+            </div>
+
+            <!-- 倒计时器 -->
+            <div class="countdown-timer">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">23</div>
+                    <div class="countdown-label">小时</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">59</div>
+                    <div class="countdown-label">分钟</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">48</div>
+                    <div class="countdown-label">秒</div>
+                </div>
+            </div>
+
+            <!-- 最终推荐：根据你的需求选择 -->
+            <div class="conclusion">
+                <h3 style="color: #1a1a1a; margin-bottom: var(--spacing-md);">⚡ 30秒快速决策指南</h3>
+                <p style="color: #1a1a1a; margin-bottom: var(--spacing-lg);">经过全面深度测试，每款软件都有其独特的优势。没有"一刀切"的最佳选择，最重要的是找到最适合你需求的解决方案。</p>
+                
+                <div class="recommendation-cards">
+                    <div class="recommendation-card compare-card" data-product="mcafee">
+                        <h4>👨‍👩‍👧‍👦 家庭多设备用户</h4>
+                        <p><strong>推荐：McAfee Total Protection</strong></p>
+                        <p>无限设备保护，价格实惠，功能全面，VPN无限流量。一份订阅，全家无忧，是家庭用户的不二之选。</p>
+                        <span class="winner-badge">🏆 性价比冠军</span>
+                        <a href="#comparison" onclick="scrollToProduct('mcafee')" class="cta-fire-button cta-fire-button-sm" style="margin-top: 1rem;">
+                            🔥 立即锁定独家优惠
+                        </a>
+                    </div>
+
+                    <div class="recommendation-card compare-card" data-product="totalav">
+                        <h4>🚀 性能敏感用户</h4>
+                        <p><strong>推荐：TotalAV Antivirus Pro</strong></p>
+                        <p>系统影响最小，扫描速度快，自带高级优化工具。适合老旧电脑或追求极致流畅体验的用户。</p>
+                        <span class="winner-badge">🏆 性能冠军</span>
+                        <a href="#comparison" onclick="scrollToProduct('totalav')" class="cta-fire-button cta-fire-button-sm" style="margin-top: 1rem;">
+                            🔥 立即锁定独家优惠
+                        </a>
+                    </div>
+
+                    <div class="recommendation-card compare-card" data-product="norton">
+                        <h4>🛡️ 全面防护追求者</h4>
+                        <p><strong>推荐：Norton 360 Deluxe</strong></p>
+                        <p>防护能力最强（99.9%），功能最全面，附带50GB云备份，60天退款保证。提供最安心的全方位保护。</p>
+                        <span class="winner-badge">🏆 防护冠军</span>
+                        <a href="#comparison" onclick="scrollToProduct('norton')" class="cta-fire-button cta-fire-button-sm" style="margin-top: 1rem;">
+                            🔥 立即锁定独家优惠
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 终极CTA -->
+            <div class="final-cta">
+                <!-- 联盟政策声明 - 缩小版居中 -->
+                <div style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.06), rgba(16, 185, 129, 0.06)); border: 1px solid rgba(37, 99, 235, 0.15); border-radius: 12px; padding: 1rem 1.5rem; margin: 2rem auto 1.5rem; max-width: 700px; text-align: center;">
+                    <h5 style="color: #2563eb; font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 700;">💼 透明声明 - 我们的收入方式</h5>
+                    <p style="color: #64748b; font-size: 0.85rem; line-height: 1.6; margin: 0;">
+                        本页面包含联盟链接。当您点击下方优惠按钮并完成购买时，我们会从广告联盟获得少量佣金（<strong style="color: #2563eb;">不增加您的购买成本</strong>）。这些佣金支持我们持续进行独立测试和内容创作。感谢您通过我们的链接购买，这是对我们付出的最好支持！🙏
+                    </p>
+                    <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid rgba(37, 99, 235, 0.1); font-size: 0.8rem;">
+                        <a href="affiliate-disclosure.html" style="color: #2563eb; text-decoration: none; font-weight: 600; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">📄 查看完整的联盟披露政策 →</a>
+                    </div>
+                </div>
+                
+                <a href="#reviews" class="cta-secondary">
+                    查看10,000+真实用户评价 →
+                </a>
+            </div>
+
+            <!-- 信任背书 -->
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <span class="icon">🔒</span>
+                    <span>256位SSL加密</span>
+                </div>
+                <div class="trust-badge">
+                    <span class="icon">✓</span>
+                    <span>官方授权经销商</span>
+                </div>
+                <div class="trust-badge">
+                    <span class="icon">🛡️</span>
+                    <span>隐私保护认证</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         实时成交记录（浮动通知）
+    ============================================ -->
+    <div class="live-purchases" id="livePurchases">
+        <div class="live-purchase-content">
+            <div class="live-purchase-avatar" id="purchaseAvatar">李</div>
+            <div class="live-purchase-text">
+                <div class="live-purchase-name">
+                    <span id="purchaseName">李**</span> 刚刚通过本页面
+                </div>
+                <div class="live-purchase-action">
+                    购买了 <strong id="purchaseProduct">McAfee</strong>，节省了 
+                    <span class="live-purchase-savings" id="purchaseSavings">¥289</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         JavaScript 交互逻辑
+    ============================================ -->
+    <script>
+        // ============================================
+        // 倒计时器
+        // ============================================
+        function updateCountdown() {
+            const now = new Date();
+            const tomorrow = new Date(now);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(0, 0, 0, 0);
+            
+            const diff = tomorrow - now;
+            
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        // 每秒更新倒计时
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // ============================================
+        // 保存和分享功能
+        // ============================================
+        function saveAsPDF() {
+            alert("为保存完整格式，建议使用浏览器的打印功能（Ctrl+P 或 Cmd+P），然后选择'另存为PDF'选项。");
+            window.print();
+        }
+
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({
+                    title: '2025年终极网络安全软件横评 | McAfee vs TotalAV vs Norton',
+                    text: '这份详细的网络安全软件对比报告非常有用！168小时测试，42项指标深度对比',
+                    url: window.location.href,
+                })
+                .then(() => console.log('分享成功'))
+                .catch(error => {
+                    console.log('分享失败，复制链接到剪贴板');
+                    copyLink();
+                });
+            } else {
+                copyLink();
+            }
+        }
+
+        function copyLink() {
+            const url = window.location.href;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url).then(() => {
+                    alert("链接已复制到剪贴板，可以分享给朋友了！\n\n" + url);
+                }).catch(() => {
+                    fallbackCopyLink(url);
+                });
+            } else {
+                fallbackCopyLink(url);
+            }
+        }
+
+        function fallbackCopyLink(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                alert("链接已复制到剪贴板！\n\n" + text);
+            } catch (err) {
+                alert("请手动复制链接：\n\n" + text);
+            }
+            document.body.removeChild(textArea);
+        }
+
+        // ============================================
+        // 实时成交记录轮播
+        // ============================================
+        const purchases = [
+            { name: '李**', avatar: '李', product: 'McAfee Total Protection', savings: '¥289' },
+            { name: '张**', avatar: '张', product: 'TotalAV Pro', savings: '¥195' },
+            { name: '王**', avatar: '王', product: 'Norton 360 Deluxe', savings: '¥350' },
+            { name: '刘**', avatar: '刘', product: 'McAfee Total Protection', savings: '¥289' },
+            { name: '陈**', avatar: '陈', product: 'TotalAV Pro', savings: '¥195' },
+            { name: '杨**', avatar: '杨', product: 'Norton 360 Deluxe', savings: '¥350' }
+        ];
+
+        let currentPurchaseIndex = 0;
+
+        function showLivePurchase() {
+            const purchaseElement = document.getElementById('livePurchases');
+            const purchase = purchases[currentPurchaseIndex];
+            
+            // 更新内容
+            document.getElementById('purchaseAvatar').textContent = purchase.avatar;
+            document.getElementById('purchaseName').textContent = purchase.name;
+            document.getElementById('purchaseProduct').textContent = purchase.product;
+            document.getElementById('purchaseSavings').textContent = purchase.savings;
+            
+            // 显示通知
+            purchaseElement.classList.add('show');
+            
+            // 5秒后隐藏
+            setTimeout(() => {
+                purchaseElement.classList.remove('show');
+            }, 5000);
+            
+            // 更新索引
+            currentPurchaseIndex = (currentPurchaseIndex + 1) % purchases.length;
+        }
+
+        // 每8秒显示一次
+        setInterval(showLivePurchase, 8000);
+        // 3秒后首次显示
+        setTimeout(showLivePurchase, 3000);
+
+        // ============================================
+        // 平滑滚动增强
+        // ============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ============================================
+        // 专属优惠按钮点击滚动
+        // ============================================
+        function scrollToProduct(productId) {
+            // 首先滚动到尾屏
+            const actionSection = document.getElementById('action');
+            if (actionSection) {
+                actionSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // 延迟500ms后高亮对应产品
+                setTimeout(() => {
+                    const productCard = document.querySelector(`.compare-card[data-product="${productId}"]`);
+                    if (productCard) {
+                        // 添加高亮动画
+                        productCard.style.transition = 'all 0.5s ease';
+                        productCard.style.transform = 'scale(1.05)';
+                        productCard.style.boxShadow = '0 20px 60px rgba(37, 99, 235, 0.3)';
+                        
+                        // 2秒后恢复
+                        setTimeout(() => {
+                            productCard.style.transform = 'scale(1)';
+                            productCard.style.boxShadow = '';
+                        }, 2000);
+                    }
+                }, 500);
+            }
+        }
+
+        // ============================================
+        // 移动端菜单控制
+        // ============================================
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu.style.display === 'none' || mobileMenu.style.display === '') {
+                mobileMenu.style.display = 'block';
+            } else {
+                mobileMenu.style.display = 'none';
+            }
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.style.display = 'none';
+        }
+
+        // ============================================
+        // 页眉滚动显示/隐藏
+        // ============================================
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // 向下滚动，隐藏页眉
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                // 向上滚动，显示页眉
+                header.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // ============================================
+        // 性能监控（开发用）
+        // ============================================
+        window.addEventListener('load', () => {
+            const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+            console.log(`⚡ 页面加载时间: ${loadTime}ms`);
+            
+            // 检查文件大小
+            const resources = performance.getEntriesByType('navigation')[0];
+            const transferSize = resources.transferSize;
+            console.log(`📦 传输大小: ${Math.round(transferSize / 1024)}KB`);
+        });
+
+        // ============================================
+        // 添加页面可见性跟踪
+        // ============================================
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                console.log('用户离开页面');
+            } else {
+                console.log('用户返回页面');
+            }
+        });
+    </script>
+
+    <!-- ============================================
+         页脚导航
+    ============================================ -->
+    <footer style="background: var(--secondary-color); color: white; padding: var(--spacing-xl) 0 var(--spacing-md); margin-top: var(--spacing-xl);">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-lg); margin-bottom: var(--spacing-lg);">
+                <!-- 快速导航 -->
+                <div>
+                    <h4 style="margin-bottom: var(--spacing-md); color: white; font-size: 1.1rem;">快速导航</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: var(--spacing-sm);"><a href="landing-page-v2-anxiety-marketing.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">首页</a></li>
+                        <li style="margin-bottom: var(--spacing-sm);"><a href="about-us.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">关于我们</a></li>
+                        <li style="margin-bottom: var(--spacing-sm);"><a href="contact.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">联系我们</a></li>
+                    </ul>
+                </div>
+
+                <!-- 法律信息 -->
+                <div>
+                    <h4 style="margin-bottom: var(--spacing-md); color: white; font-size: 1.1rem;">法律信息</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: var(--spacing-sm);"><a href="affiliate-disclosure.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">联盟披露</a></li>
+                        <li style="margin-bottom: var(--spacing-sm);"><a href="privacy-policy.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">隐私政策</a></li>
+                        <li style="margin-bottom: var(--spacing-sm);"><a href="terms-of-service.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">使用条款</a></li>
+                        <li style="margin-bottom: var(--spacing-sm);"><a href="cookie-policy.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Cookie政策</a></li>
+                    </ul>
+                </div>
+
+                <!-- 资源中心 -->
+                <div>
+                    <h4 style="margin-bottom: var(--spacing-md); color: white; font-size: 1.1rem;">资源中心</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: var(--spacing-sm);"><a href="#detailed-comparison" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">测试方法</a></li>
+                        <li style="margin-bottom: var(--spacing-sm);"><a href="#action" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">常见问题</a></li>
+                        <li style="margin-bottom: var(--spacing-sm);"><a href="#solution" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">产品对比</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 页脚底部 -->
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: var(--spacing-md); text-align: center; color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                <p>&copy; 2025 网络安全评测中心. 保留所有权利.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+                    本网站包含联盟链接。通过推荐链接购买产品我们可能获得佣金，但不会增加您的成本。
+                </p>
+                <p style="margin-top: 0.5rem;">
+                    <a href="affiliate-disclosure.html" style="color: rgba(255,255,255,0.7); margin: 0 0.5rem;">联盟披露</a> |
+                    <a href="privacy-policy.html" style="color: rgba(255,255,255,0.7); margin: 0 0.5rem;">隐私政策</a> |
+                    <a href="terms-of-service.html" style="color: rgba(255,255,255,0.7); margin: 0 0.5rem;">使用条款</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         Cookie 同意横幅 (GDPR合规)
+    ============================================ -->
+    <div id="cookieConsent" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: #1a1a2e; color: white; padding: 1.5rem; box-shadow: 0 -4px 20px rgba(0,0,0,0.3); z-index: 10000; animation: slideUp 0.4s ease-out;">
+        <div class="container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+            <div style="flex: 1; min-width: 300px;">
+                <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem;">🍪 我们使用Cookie</h3>
+                <p style="font-size: 0.9rem; line-height: 1.6; color: rgba(255,255,255,0.9);">
+                    我们使用Cookie来改善您的浏览体验、分析网站流量并支持我们的联盟合作。继续使用本网站即表示您同意我们的Cookie使用。
+                    <a href="cookie-policy.html" style="color: #00b0f0; text-decoration: underline;">了解更多</a>
+                </p>
+            </div>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <button onclick="acceptAllCookies()" style="background: #28a745; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: bold; cursor: pointer; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    ✓ 接受所有
+                </button>
+                <button onclick="showCookieSettings()" style="background: transparent; color: white; border: 2px solid white; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: bold; cursor: pointer; transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">
+                    ⚙️ 自定义
+                </button>
+                <button onclick="rejectNonEssentialCookies()" style="background: transparent; color: rgba(255,255,255,0.7); border: none; padding: 0.75rem 1rem; cursor: pointer; text-decoration: underline;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">
+                    拒绝非必要
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie设置弹窗 -->
+    <div id="cookieSettings" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; color: #333; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 10001; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto;">
+        <h2 style="margin-bottom: 1rem; color: #1a1a2e;">Cookie偏好设置</h2>
+        <p style="margin-bottom: 1.5rem; color: #666; line-height: 1.6;">
+            请选择您希望我们使用的Cookie类型。必要Cookie无法禁用，因为它们对网站运行至关重要。
+        </p>
+
+        <div style="margin: 1.5rem 0; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+            <label style="display: flex; align-items: center; justify-content: space-between; cursor: not-allowed;">
+                <div>
+                    <strong style="color: #1a1a2e;">必要Cookie</strong>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 0.25rem;">网站基本功能所需，无法禁用</p>
+                </div>
+                <input type="checkbox" checked disabled style="width: 20px; height: 20px;">
+            </label>
+        </div>
+
+        <div style="margin: 1.5rem 0; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+            <label style="display: flex; align-items: center; justify-content: space-between; cursor: pointer;">
+                <div>
+                    <strong style="color: #1a1a2e;">分析Cookie</strong>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 0.25rem;">帮助我们了解网站使用情况（Google Analytics）</p>
+                </div>
+                <input type="checkbox" id="analyticsCookies" checked style="width: 20px; height: 20px; cursor: pointer;">
+            </label>
+        </div>
+
+        <div style="margin: 1.5rem 0; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+            <label style="display: flex; align-items: center; justify-content: space-between; cursor: pointer;">
+                <div>
+                    <strong style="color: #1a1a2e;">营销Cookie</strong>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 0.25rem;">用于追踪联盟链接和展示相关内容</p>
+                </div>
+                <input type="checkbox" id="marketingCookies" style="width: 20px; height: 20px; cursor: pointer;">
+            </label>
+        </div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+            <button onclick="saveCustomCookieSettings()" style="flex: 1; background: #c12026; color: white; border: none; padding: 1rem; border-radius: 8px; font-weight: bold; cursor: pointer; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                保存设置
+            </button>
+            <button onclick="closeCookieSettings()" style="flex: 1; background: #6c757d; color: white; border: none; padding: 1rem; border-radius: 8px; font-weight: bold; cursor: pointer; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                取消
+            </button>
+        </div>
+    </div>
+
+    <!-- Cookie遮罩层 -->
+    <div id="cookieOverlay" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 10000;" onclick="closeCookieSettings()"></div>
+
+    <style>
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+    <script>
+        // ============================================
+        // Cookie 同意管理
+        // ============================================
+        
+        // 检查Cookie同意状态
+        function checkCookieConsent() {
+            const consent = localStorage.getItem('cookieConsent');
+            const consentDate = localStorage.getItem('cookieConsentDate');
+            
+            // 如果没有同意记录，或者同意已过期（6个月），显示横幅
+            if (!consent || !consentDate || isConsentExpired(consentDate)) {
+                document.getElementById('cookieConsent').style.display = 'block';
+            } else {
+                // 根据用户选择加载相应的Cookie
+                loadCookiesBasedOnConsent(JSON.parse(consent));
+            }
+        }
+
+        // 检查同意是否过期（6个月）
+        function isConsentExpired(dateString) {
+            const consentDate = new Date(dateString);
+            const now = new Date();
+            const sixMonthsAgo = new Date(now.setMonth(now.getMonth() - 6));
+            return consentDate < sixMonthsAgo;
+        }
+
+        // 接受所有Cookie
+        function acceptAllCookies() {
+            const consent = {
+                essential: true,
+                analytics: true,
+                marketing: true
+            };
+            saveCookieConsent(consent);
+            document.getElementById('cookieConsent').style.display = 'none';
+            loadCookiesBasedOnConsent(consent);
+        }
+
+        // 拒绝非必要Cookie
+        function rejectNonEssentialCookies() {
+            const consent = {
+                essential: true,
+                analytics: false,
+                marketing: false
+            };
+            saveCookieConsent(consent);
+            document.getElementById('cookieConsent').style.display = 'none';
+            loadCookiesBasedOnConsent(consent);
+        }
+
+        // 显示Cookie设置
+        function showCookieSettings() {
+            document.getElementById('cookieSettings').style.display = 'block';
+            document.getElementById('cookieOverlay').style.display = 'block';
+            document.getElementById('cookieConsent').style.display = 'none';
+        }
+
+        // 关闭Cookie设置
+        function closeCookieSettings() {
+            document.getElementById('cookieSettings').style.display = 'none';
+            document.getElementById('cookieOverlay').style.display = 'none';
+            document.getElementById('cookieConsent').style.display = 'block';
+        }
+
+        // 保存自定义Cookie设置
+        function saveCustomCookieSettings() {
+            const consent = {
+                essential: true,
+                analytics: document.getElementById('analyticsCookies').checked,
+                marketing: document.getElementById('marketingCookies').checked
+            };
+            saveCookieConsent(consent);
+            document.getElementById('cookieSettings').style.display = 'none';
+            document.getElementById('cookieOverlay').style.display = 'none';
+            loadCookiesBasedOnConsent(consent);
+        }
+
+        // 保存Cookie同意记录
+        function saveCookieConsent(consent) {
+            localStorage.setItem('cookieConsent', JSON.stringify(consent));
+            localStorage.setItem('cookieConsentDate', new Date().toISOString());
+        }
+
+        // 根据用户同意加载Cookie
+        function loadCookiesBasedOnConsent(consent) {
+            // 加载Google Analytics（如果用户同意）
+            if (consent.analytics) {
+                console.log('✓ 分析Cookie已启用 - Google Analytics可加载');
+                // 这里可以添加Google Analytics代码
+                // 示例：loadGoogleAnalytics();
+            }
+
+            // 加载营销Cookie（如果用户同意）
+            if (consent.marketing) {
+                console.log('✓ 营销Cookie已启用 - 联盟追踪可启用');
+                // 这里可以添加联盟追踪代码
+            }
+
+            console.log('Cookie设置已保存:', consent);
+        }
+
+        // 页面加载时检查Cookie同意
+        window.addEventListener('load', checkCookieConsent);
+    </script>
+
+</body>
+</html>
+
+
