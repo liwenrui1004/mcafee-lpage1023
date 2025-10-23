@@ -1,0 +1,38 @@
+# Next.js files and directories (not needed for static site)
+app/
+components/
+lib/
+types/
+pages/
+public/
+node_modules/
+.next/
+out/
+
+# Next.js config files
+next.config.js
+next-env.d.ts
+tsconfig.json
+
+# Build and config files
+tailwind.config.js
+postcss.config.js
+package-lock.json
+
+# Development files
+scripts/
+wordpress-integration/
+wordpress-integration-zh-backup/
+strapi-config/
+
+# Documentation files
+*.md
+!README.md
+
+# Other
+netlify.toml
+*.py
+*.sh
+*.bat
+env.example
+

@@ -1,23 +1,30 @@
 {
-  "buildCommand": "echo 'Static site - no build needed'",
-  "outputDirectory": ".",
-  "framework": null,
-  "rewrites": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/",
-      "destination": "/preview-english.html"
+      "src": "*.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/preview-english.html"
     },
     {
-      "source": "/about",
-      "destination": "/about.html"
+      "src": "/about",
+      "dest": "/about.html"
     },
     {
-      "source": "/contact",
-      "destination": "/contact.html"
+      "src": "/contact",
+      "dest": "/contact.html"
     },
     {
-      "source": "/privacy",
-      "destination": "/privacy-policy.html"
+      "src": "/privacy",
+      "dest": "/privacy-policy.html"
+    },
+    {
+      "handle": "filesystem"
     }
   ],
   "headers": [
@@ -47,6 +54,5 @@
         }
       ]
     }
-  ],
-  "cleanUrls": true
+  ]
 }
