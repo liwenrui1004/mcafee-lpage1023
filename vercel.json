@@ -1,32 +1,20 @@
 {
-  "version": 2,
-  "name": "mcafee-landing-page",
-  "builds": [
+  "rewrites": [
     {
-      "src": "*.html",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/",
-      "dest": "/preview-english.html"
+      "source": "/",
+      "destination": "/preview-english.html"
     },
     {
-      "src": "/about",
-      "dest": "/about.html"
+      "source": "/about",
+      "destination": "/about.html"
     },
     {
-      "src": "/contact",
-      "dest": "/contact.html"
+      "source": "/contact",
+      "destination": "/contact.html"
     },
     {
-      "src": "/privacy",
-      "dest": "/privacy-policy.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "source": "/privacy",
+      "destination": "/privacy-policy.html"
     }
   ],
   "headers": [
@@ -56,5 +44,6 @@
         }
       ]
     }
-  ]
+  ],
+  "cleanUrls": true
 }
