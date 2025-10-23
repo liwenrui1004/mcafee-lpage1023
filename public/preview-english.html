@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McAfee Security - Landing Page Preview</title>
+    <style>
+
+        /* ============================================
+           CSS Variables System
+        ============================================ */
+        :root {
+            /* Anxiety Colors */
+            --danger-red: #dc2626;
+            --danger-dark: #991b1b;
+            --warning-orange: #f97316;
+            --dark-bg: #0f1419;
+            --dark-secondary: #1a1f2e;
+            
+            /* Hope Colors */
+            --success-green: #10b981;
+            --primary-blue: #2563eb;
+            --light-bg: #f8fafc;
+            --light-secondary: #f1f5f9;
+            
+            /* Neutral Colors */
+            --text-dark: #1e293b;
+            --text-light: #e2e8f0;
+            --text-muted: #64748b;
+            
+            /* Gradients */
+            --gradient-danger: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            --gradient-primary: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            
+            /* Other Colors */
+            --secondary-color: #1a1f2e;
+            
+            /* Fonts */
+            --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        /* ============================================
+           Global Reset
+        ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-system);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ============================================
+           Screen Container Base
+        ============================================ */
+        .screen {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: var(--spacing-md);
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* ============================================
+           First Screen - Anxiety Creation
+        ============================================ */
+        .screen-anxiety {
+            background: var(--dark-bg);
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Dynamic Background Particles */
+        .screen-anxiety::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(249, 115, 22, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(220, 38, 38, 0.05) 0%, transparent 50%);
+            animation: pulse-bg 8s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes pulse-bg {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        .screen-anxiety > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Broken Shield Icon */
+        .broken-shield {
+            width: 120px;
+            height: 140px;
+            margin: 0 auto 2rem;
+            animation: shake 3s ease-in-out infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: rotate(0deg); }
+            10%, 30%, 50%, 70%, 90% { transform: rotate(-2deg); }
+            20%, 40%, 60%, 80% { transform: rotate(2deg); }
+        }
+
+        .broken-shield svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 20px rgba(220, 38, 38, 0.5));
+        }
+
+        /* Anxiety Title */
+        .anxiety-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3rem;
+            line-height: 1.2;
+        }
+
+        .text-danger {
+            color: var(--danger-red);
+            display: block;
+            animation: glow-red 2s ease-in-out infinite;
+        }
+
+        @keyframes glow-red {
+            0%, 100% { text-shadow: 0 0 10px rgba(220, 38, 38, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(220, 38, 38, 0.8), 0 0 30px rgba(220, 38, 38, 0.4); }
+        }
+
+        .text-highlight {
+            color: var(--warning-orange);
+            display: block;
+            margin-top: 0.5rem;
+        }
+
+        /* Stats Animation */
+        .anxiety-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(220, 38, 38, 0.1);
+            border: 2px solid var(--danger-red);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--danger-red);
+            margin-bottom: 0.5rem;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            opacity: 0.9;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: rgba(249, 115, 22, 0.1);
+            border: 2px solid var(--warning-orange);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .warning-icon {
+            font-size: 3rem;
+            animation: pulse-warning 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-warning {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .warning-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--warning-orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .warning-text {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            padding: 1.25rem 3rem;
+            background: var(--gradient-danger);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+            border: none;
+            cursor: pointer;
+            margin: 2rem auto;
+            display: block;
+            max-width: 400px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(220, 38, 38, 0.4);
+        }
+
+        .pulse-animation {
+            animation: pulse-btn 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-btn {
+            0%, 100% { box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3); }
+            50% { box-shadow: 0 15px 50px rgba(220, 38, 38, 0.5), 0 0 0 10px rgba(220, 38, 38, 0.1); }
+        }
+
+        /* Social Proof */
+        .social-proof {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            opacity: 0.9;
+        }
+
+        .social-proof strong {
+            color: var(--success-green);
+        }
+
+        /* ============================================
+           Threats Section
+        ============================================ */
+        .screen-threats {
+            background: linear-gradient(180deg, var(--dark-bg) 0%, var(--dark-secondary) 100%);
+            color: var(--text-light);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .text-danger-title {
+            color: var(--danger-red);
+        }
+
+        .threats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .threat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .threat-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--danger-red);
+            box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
+        }
+
+        .threat-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .threat-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--danger-red);
+            margin-bottom: 1rem;
+        }
+
+        .threat-description {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .threat-stats {
+            background: rgba(220, 38, 38, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* ============================================
+           Solution Section
+        ============================================ */
+        .screen-solution {
+            background: var(--light-bg);
+        }
+
+        .text-success {
+            color: var(--success-green);
+        }
+
+        .solution-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .solution-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .solution-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .solution-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .solution-description {
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* ============================================
+           Comparison Table
+        ============================================ */
+        .screen-comparison {
+            background: white;
+        }
+
+        .comparison-table {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table thead {
+            background: var(--dark-bg);
+            color: white;
+        }
+
+        .comparison-table th {
+            padding: 1.5rem;
+            text-align: left;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .comparison-table td {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--light-secondary);
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tbody tr:hover {
+            background: var(--light-bg);
+        }
+
+        .check-icon {
+            color: var(--success-green);
+            font-size: 1.5rem;
+        }
+
+        .cross-icon {
+            color: var(--danger-red);
+            font-size: 1.5rem;
+        }
+
+        .highlight-col {
+            background: rgba(16, 185, 129, 0.05);
+        }
+
+        /* Product Header in Comparison Table */
+        .product-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .product-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .product-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .comparison-cta-btn {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-purple));
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+        }
+
+        .comparison-cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+        }
+
+        .highlight-col .comparison-cta-btn {
+            background: linear-gradient(135deg, var(--success-green), #059669);
+        }
+
+        .highlight-col .comparison-cta-btn:hover {
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        /* ============================================
+           Pricing Section
+        ============================================ */
+        .screen-pricing {
+            background: var(--light-bg);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border: 3px solid var(--success-green);
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--gradient-success);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .pricing-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--success-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-period {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 1px solid var(--light-secondary);
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--gradient-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            text-align: center;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        .featured .pricing-button {
+            background: var(--gradient-success);
+        }
+
+        /* ============================================
+           FAQ Section
+        ============================================ */
+        .screen-faq {
+            background: white;
+        }
+
+        .faq-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--light-bg);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            padding: 1.5rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            background: var(--light-secondary);
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 2rem 1.5rem;
+        }
+
+        .faq-answer p {
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* ============================================
+           CTA Section
+        ============================================ */
+        .screen-cta {
+            background: var(--dark-bg);
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-description {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-primary {
+            background: var(--gradient-success);
+        }
+
+        .cta-secondary {
+            background: var(--gradient-primary);
+        }
+
+        /* ============================================
+           Footer
+        ============================================ */
+        footer {
+            background: var(--dark-bg);
+            color: var(--text-light);
+            padding: var(--spacing-lg) var(--spacing-md);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .footer-section h3 {
+            color: var(--danger-red);
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.5rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: var(--spacing-sm);
+            color: white;
+        }
+
+        .footer-section p {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            line-height: 2;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: var(--spacing-md);
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        /* ============================================
+           Cookie Banner
+        ============================================ */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--dark-secondary);
+            color: var(--text-light);
+            padding: 1.5rem;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .cookie-banner.show {
+            transform: translateY(0);
+        }
+
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cookie-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .cookie-button {
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .cookie-accept {
+            background: var(--success-green);
+            color: white;
+        }
+
+        .cookie-decline {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .cookie-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* ============================================
+           Responsive Design
+        ============================================ */
+        @media (max-width: 768px) {
+            .anxiety-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .warning-box {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .threats-grid,
+            .solution-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-button {
+                max-width: 100%;
+            }
+
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cookie-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .comparison-table {
+                overflow-x: auto;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* ============================================
+           Utility Classes
+        ============================================ */
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-1 { margin-bottom: var(--spacing-xs); }
+        .mb-2 { margin-bottom: var(--spacing-sm); }
+        .mb-3 { margin-bottom: var(--spacing-md); }
+        .mb-4 { margin-bottom: var(--spacing-lg); }
+
+        .mt-1 { margin-top: var(--spacing-xs); }
+        .mt-2 { margin-top: var(--spacing-sm); }
+        .mt-3 { margin-top: var(--spacing-md); }
+        .mt-4 { margin-top: var(--spacing-lg); }
+
+        /* ============================================
+           Header / Navigation
+        ============================================ */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .site-header.scrolled {
+            background: rgba(15, 20, 25, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .site-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .site-logo span {
+            color: var(--danger-red);
+        }
+
+        .site-nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .site-nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .site-nav a:hover {
+            color: white;
+        }
+
+        .site-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--danger-red);
+            transition: width 0.3s ease;
+        }
+
+        .site-nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .site-nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(15, 20, 25, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                transform: translateY(-200%);
+                transition: transform 0.3s ease;
+            }
+
+            .site-nav.active {
+                transform: translateY(0);
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+
+        /* Add padding to body to account for fixed header */
+        body {
+            padding-top: 70px;
+        }
+
+        /* ============================================
+           Footer
+        ============================================ */
+        .site-footer {
+            background: var(--dark-bg);
+            color: var(--text-light);
+            padding: 3rem 0 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-disclaimer {
+            background: rgba(220, 38, 38, 0.1);
+            border-left: 4px solid var(--danger-red);
+            padding: 1rem;
+            margin-bottom: 2rem;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+    
+    </style>
+</head>
+<body>
+<header class="site-header">
+    <div class="header-container">
+        <a href="" class="site-logo">
+            <span>🛡️</span> 
+        </a>
+        
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            ☰
+        </button>
+        
+        <nav class="site-nav">
+            <a href="#threats">Security Threats</a>
+            <a href="#solution">Solutions</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+        </nav>
+    </div>
+</header>
+
+<!-- ============================================
+     First Screen: Anxiety Creation
+============================================ -->
+<section id="anxiety" class="screen screen-anxiety">
+    <div class="container">
+        <!-- Broken Shield Icon -->
+        <div class="broken-shield">
+            <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                <!-- Shield Body -->
+                <path d="M50 10 L90 25 L90 55 Q90 85 50 110 Q10 85 10 55 L10 25 Z" 
+                      fill="none" 
+                      stroke="#dc2626" 
+                      stroke-width="3"
+                      stroke-dasharray="5,5"/>
+                
+                <!-- Crack Effect -->
+                <path d="M50 20 L55 50 L45 80" 
+                      stroke="#dc2626" 
+                      stroke-width="2.5"
+                      stroke-linecap="round"/>
+                <path d="M30 40 L50 50 L70 45" 
+                      stroke="#dc2626" 
+                      stroke-width="2"
+                      stroke-linecap="round"/>
+                
+                <!-- X Mark -->
+                <line x1="35" y1="45" x2="65" y2="75" 
+                      stroke="#dc2626" 
+                      stroke-width="4"
+                      stroke-linecap="round"/>
+                <line x1="65" y1="45" x2="35" y2="75" 
+                      stroke="#dc2626" 
+                      stroke-width="4"
+                      stroke-linecap="round"/>
+            </svg>
+        </div>
+
+        <h1 class="anxiety-title">
+            <span class="text-danger">73% of Devices Are Unprotected</span>
+        </h1>
+
+        <!-- Rolling Stats Counter -->
+        <div class="anxiety-stats">
+            <div class="stat-item">
+                <div class="stat-number" data-target="2200">0</div>
+                <div class="stat-label">Cyberattacks<br>Per Day</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="560">0</div>
+                <div class="stat-label">Million Records<br>Stolen in 2024</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="18">0</div>
+                <div class="stat-label">Billion Dollars<br>in Losses</div>
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <div class="warning-icon">⚠️</div>
+            <div>
+                <div class="warning-title">Cyber attacks happen every 39 seconds</div>
+                <div class="warning-text">
+                    Don't wait until it's too late. Get protection now.
+                </div>
+            </div>
+        </div>
+
+        <a href="#solution" class="cta-button pulse-animation">
+            See Solutions →
+        </a>
+
+        <!-- 3 Top Threats Section (moved to first screen) -->
+        <div style="margin-top: 3rem;">
+            <h2 class="section-title">
+                <span class="text-danger-title">Top 3 Threats</span> You Face Right Now
+            </h2>
+
+            <div class="threats-grid">
+            <div class="threat-card">
+                <div class="threat-icon">🦠</div>
+                <h3 class="threat-title">Ransomware</h3>
+                <p class="threat-description">
+                    1 attack every 11 seconds. Average loss: <strong>$200,000</strong>
+                </p>
+            </div>
+
+            <div class="threat-card">
+                <div class="threat-icon">🎣</div>
+                <h3 class="threat-title">Phishing</h3>
+                <p class="threat-description">
+                    <strong>90% of breaches</strong> start here. 3.4B fake emails daily.
+                </p>
+            </div>
+
+            <div class="threat-card">
+                <div class="threat-icon">👤</div>
+                <h3 class="threat-title">Identity Theft</h3>
+                <p class="threat-description">
+                    1.4M reports in 2023. Average loss: <strong>$1,100</strong>
+                </p>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     Second Screen: Solution & Comparison Combined
+============================================ -->
+<section id="solution" class="screen screen-solution">
+    <div class="container">
+        <h2 class="section-title">
+            <span class="text-success">✓</span> Top Security Experts Recommend These Solutions
+        </h2>
+
+        <div class="solution-grid">
+            <div class="solution-card">
+                <div class="solution-icon">🛡️</div>
+                <h3 class="solution-title">Real-Time Protection</h3>
+                <p class="solution-description">
+                    AI-powered monitoring blocks threats instantly across all devices.
+                </p>
+            </div>
+
+            <div class="solution-card">
+                <div class="solution-icon">🔒</div>
+                <h3 class="solution-title">VPN + Identity Protection</h3>
+                <p class="solution-description">
+                    Secure browsing, dark web monitoring, and theft protection included.
+                </p>
+            </div>
+
+            <div class="solution-card">
+                <div class="solution-icon">👨‍👩‍👧‍👦</div>
+                <h3 class="solution-title">Multi-Device Coverage</h3>
+                <p class="solution-description">
+                    Protect unlimited devices with parental controls and easy setup.
+                </p>
+            </div>
+        </div>
+
+        <!-- Expert Comparison Section (merged into solution screen) -->
+        <div style="margin-top: 4rem;" id="comparison">
+            <h2 class="section-title">
+                Expert Comparison: Top 3 Security Solutions
+            </h2>
+
+        <div class="comparison-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th class="highlight-col">
+                            <div class="product-header">
+                                <div class="product-icon">🛡️</div>
+                                <div class="product-name">McAfee+ Premium</div>
+                                <a href="https://www.mcafee.com" class="comparison-cta-btn" target="_blank" rel="nofollow noopener">
+                                    Get McAfee →
+                                </a>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="product-header">
+                                <div class="product-icon">🔰</div>
+                                <div class="product-name">Norton 360 Deluxe</div>
+                                <a href="https://www.norton.com" class="comparison-cta-btn" target="_blank" rel="nofollow noopener">
+                                    Get Norton →
+                                </a>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="product-header">
+                                <div class="product-icon">⚡</div>
+                                <div class="product-name">Bitdefender Premium</div>
+                                <a href="https://www.bitdefender.com" class="comparison-cta-btn" target="_blank" rel="nofollow noopener">
+                                    Get Bitdefender →
+                                </a>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Device Coverage</strong></td>
+                        <td class="highlight-col"><strong>Unlimited</strong></td>
+                        <td>5 Devices</td>
+                        <td>10 Devices</td>
+                    </tr>
+                    <tr>
+                        <td><strong>VPN Data</strong></td>
+                        <td class="highlight-col">Unlimited</td>
+                        <td>Unlimited</td>
+                        <td>200 MB/day</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Identity Monitoring</strong></td>
+                        <td class="highlight-col"><span class="check-icon">✓</span> Advanced</td>
+                        <td><span class="check-icon">✓</span> LifeLock</td>
+                        <td><span class="cross-icon">✗</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Password Manager</strong></td>
+                        <td class="highlight-col"><span class="check-icon">✓</span> True Key</td>
+                        <td><span class="check-icon">✓</span> Built-in</td>
+                        <td><span class="check-icon">✓</span> Built-in</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cloud Backup</strong></td>
+                        <td class="highlight-col"><span class="cross-icon">✗</span></td>
+                        <td><span class="check-icon">✓</span> 50GB</td>
+                        <td><span class="cross-icon">✗</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Parental Controls</strong></td>
+                        <td class="highlight-col"><span class="check-icon">✓</span> Advanced</td>
+                        <td><span class="check-icon">✓</span> Basic</td>
+                        <td><span class="check-icon">✓</span> Advanced</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Annual Price</strong></td>
+                        <td class="highlight-col"><strong style="color: var(--success-green); font-size: 1.2rem;">$84.99</strong></td>
+                        <td>$49.99</td>
+                        <td>$79.99</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     Third Screen: Pricing
+============================================ -->
+<section id="pricing" class="screen screen-pricing">
+    <div class="container">
+        <h2 class="section-title">
+            Choose Your Protection Plan
+        </h2>
+
+        <div class="pricing-grid">
+            <!-- Norton 360 -->
+            <div class="pricing-card">
+                <div class="pricing-icon">🛡️</div>
+                <h3 class="pricing-title">Norton 360 Deluxe</h3>
+                <p class="pricing-subtitle">Premium Protection</p>
+                
+                <div class="pricing-price">$49.99</div>
+                <div class="pricing-period">per year</div>
+                
+                <ul class="pricing-features">
+                    <li><span class="check-icon">✓</span> 5 Devices</li>
+                    <li><span class="check-icon">✓</span> 50GB Cloud Backup</li>
+                    <li><span class="check-icon">✓</span> VPN & Password Manager</li>
+                    <li><span class="check-icon">✓</span> Parental Controls</li>
+                    <li><span class="check-icon">✓</span> Dark Web Monitoring</li>
+                </ul>
+                
+                <a href="https://www.norton.com" class="pricing-button" target="_blank" rel="nofollow noopener">
+                    Get Norton 360
+                </a>
+            </div>
+
+            <!-- McAfee+ Premium (Featured) -->
+            <div class="pricing-card featured">
+                <div class="featured-badge">⭐ BEST FOR FAMILIES</div>
+                <div class="pricing-icon">🏆</div>
+                <h3 class="pricing-title">McAfee+ Premium</h3>
+                <p class="pricing-subtitle">Unlimited Devices</p>
+                
+                <div class="pricing-price">$84.99</div>
+                <div class="pricing-period">per year</div>
+                
+                <ul class="pricing-features">
+                    <li><span class="check-icon">✓</span> <strong>Unlimited Devices</strong></li>
+                    <li><span class="check-icon">✓</span> Unlimited VPN</li>
+                    <li><span class="check-icon">✓</span> Advanced Identity Monitoring</li>
+                    <li><span class="check-icon">✓</span> Advanced Parental Controls</li>
+                    <li><span class="check-icon">✓</span> Password Manager (True Key)</li>
+                </ul>
+                
+                <a href="https://www.mcafee.com" class="pricing-button" target="_blank" rel="nofollow noopener">
+                    Get McAfee+ Now
+                </a>
+            </div>
+
+            <!-- Bitdefender -->
+            <div class="pricing-card">
+                <div class="pricing-icon">⚡</div>
+                <h3 class="pricing-title">Bitdefender Premium Security</h3>
+                <p class="pricing-subtitle">10 Devices</p>
+                
+                <div class="pricing-price">$79.99</div>
+                <div class="pricing-period">per year</div>
+                
+                <ul class="pricing-features">
+                    <li><span class="check-icon">✓</span> 10 Devices</li>
+                    <li><span class="check-icon">✓</span> VPN (200MB/day)</li>
+                    <li><span class="check-icon">✓</span> Advanced Parental Controls</li>
+                    <li><span class="check-icon">✓</span> Password Manager</li>
+                    <li><span class="check-icon">✓</span> Anti-Tracker</li>
+                </ul>
+                
+                <a href="https://www.bitdefender.com" class="pricing-button" target="_blank" rel="nofollow noopener">
+                    Get Bitdefender
+                </a>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <p style="color: var(--text-muted); font-size: 1.1rem;">
+                💳 All plans include <strong>60-day money-back guarantee</strong> • 
+                🔒 Secure payment processing • 
+                ⚡ Instant digital delivery
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     Site Footer
+============================================ -->
+<footer class="site-footer">
+    <div class="footer-container">
+        <!-- Affiliate Disclosure -->
+        <div class="footer-disclaimer">
+            <strong>⚠️ Affiliate Disclosure:</strong> This website contains affiliate links. We may earn a commission 
+            from purchases made through our recommended links, at no additional cost to you. We only recommend products 
+            we've thoroughly tested and believe provide genuine value to our readers.
+        </div>
+
+        <div class="footer-content">
+            <!-- About Section -->
+            <div class="footer-section">
+                <h3>🛡️ </h3>
+                <p>
+                    We are dedicated to providing professional, objective cybersecurity product reviews 
+                    and recommendations to help you protect your privacy and data security in the digital age.
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>Our Mission:</strong> Empowering users with the knowledge and tools to stay safe online.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="preview-english.html">Product Reviews</a></li>
+                    <li><a href="preview-english.html">Security Blog</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="#threats">Security Threats</a></li>
+                    <li><a href="#solution">Solutions</a></li>
+                </ul>
+            </div>
+
+            <!-- Legal -->
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="privacy-policy.html">Terms of Service</a></li>
+                    <li><a href="privacy-policy.html">Affiliate Disclosure</a></li>
+                    <li><a href="privacy-policy.html">Cookie Policy</a></li>
+                    <li><a href="privacy-policy.html">Disclaimer</a></li>
+                    <li><a href="privacy-policy.html">DMCA Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li>📧 <a href="mailto:support@example.com"></a></li>
+                    <li>💬 24/7 Support Available</li>
+                    <li>🌍 Serving Customers Worldwide</li>
+                </ul>
+                <div style="margin-top: 1.5rem;">
+                    <h3 style="font-size: 0.9rem; margin-bottom: 0.5rem;">Follow Us</h3>
+                    <div style="display: flex; gap: 1rem; font-size: 1.5rem;">
+                        <a href="#" style="color: var(--text-light);" title="Twitter">🐦</a>
+                        <a href="#" style="color: var(--text-light);" title="Facebook">📘</a>
+                        <a href="#" style="color: var(--text-light);" title="LinkedIn">💼</a>
+                        <a href="#" style="color: var(--text-light);" title="YouTube">📺</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <p>&copy;  . All Rights Reserved.</p>
+            <p style="margin-top: 0.5rem;">
+                All product names, logos, and brands are property of their respective owners. 
+                All company, product and service names used in this website are for identification purposes only.
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script>
+
+    // Mobile Menu Toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const siteNav = document.querySelector('.site-nav');
+        
+        if (menuToggle && siteNav) {
+            menuToggle.addEventListener('click', function() {
+                siteNav.classList.toggle('active');
+                this.textContent = siteNav.classList.contains('active') ? '✕' : '☰';
+            });
+
+            // Close menu when clicking on a link
+            document.querySelectorAll('.site-nav a').forEach(link => {
+                link.addEventListener('click', function() {
+                    siteNav.classList.remove('active');
+                    if (menuToggle) menuToggle.textContent = '☰';
+                });
+            });
+        }
+
+        // Header scroll effect
+        const header = document.querySelector('.site-header');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Rolling Number Animation for Stats
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000; // 2 seconds
+            const increment = target / (duration / 16); // 60 FPS
+            let current = 0;
+            
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    element.textContent = Math.floor(current).toLocaleString();
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target.toLocaleString();
+                }
+            };
+            
+            updateCounter();
+        }
+
+        // Trigger counter animation when stats are visible
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                    entry.target.classList.add('animated');
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(num => animateCounter(num));
+                }
+            });
+        }, observerOptions);
+
+        const anxietyStats = document.querySelector('.anxiety-stats');
+        if (anxietyStats) {
+            statsObserver.observe(anxietyStats);
+        }
+    });
+
+    // Cookie Management
+    function checkCookie() {
+        const cookieConsent = localStorage.getItem('cookieConsent');
+        if (!cookieConsent) {
+            setTimeout(() => {
+                document.getElementById('cookieBanner').classList.add('show');
+            }, 1000);
+        }
+    }
+
+    function acceptCookies() {
+        localStorage.setItem('cookieConsent', 'accepted');
+        document.getElementById('cookieBanner').classList.remove('show');
+        
+        // Initialize analytics if consent given
+        if (typeof gtag !== 'undefined') {
+            gtag('consent', 'update', {
+                'analytics_storage': 'granted',
+                'ad_storage': 'granted'
+            });
+        }
+    }
+
+    function declineCookies() {
+        localStorage.setItem('cookieConsent', 'declined');
+        document.getElementById('cookieBanner').classList.remove('show');
+    }
+
+    // Check cookie consent on page load
+    window.addEventListener('load', checkCookie);
+
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Track CTA clicks
+    document.querySelectorAll('a[href*="mcafee"], a[href*="norton"], a[href*="bitdefender"]').forEach(link => {
+        link.addEventListener('click', function() {
+            const product = this.href.includes('mcafee') ? 'McAfee' : 
+                           this.href.includes('norton') ? 'Norton' : 'Bitdefender';
+            
+            // Google Analytics tracking
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'click', {
+                    'event_category': 'affiliate_link',
+                    'event_label': product,
+                    'value': 1
+                });
+            }
+            
+            // Facebook Pixel tracking
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Lead', {
+                    product: product,
+                    content_name: 'Affiliate Click'
+                });
+            }
+        });
+    });
+
+</script>
+</body>
+</html>
