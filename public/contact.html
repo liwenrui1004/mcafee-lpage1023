@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get in touch with us for questions, support, or feedback about security software reviews.">
+    <title>Contact Us | McAfee Security Reviews</title>
+    
+    <style>
+        /* ============================================
+           CSS Variables System (与HOME完全一致)
+        ============================================ */
+        :root {
+            /* Anxiety Colors */
+            --danger-red: #dc2626;
+            --danger-dark: #991b1b;
+            --warning-orange: #f97316;
+            --dark-bg: #0f1419;
+            --dark-secondary: #1a1f2e;
+            
+            /* Hope Colors */
+            --success-green: #10b981;
+            --primary-blue: #2563eb;
+            --light-bg: #f8fafc;
+            --light-secondary: #f1f5f9;
+            
+            /* Neutral Colors */
+            --text-dark: #1e293b;
+            --text-light: #e2e8f0;
+            --text-muted: #64748b;
+            
+            /* Gradients */
+            --gradient-danger: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            --gradient-primary: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            
+            /* Other Colors */
+            --secondary-color: #1a1f2e;
+            
+            /* Fonts */
+            --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        /* ============================================
+           Global Reset
+        ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-system);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 70px;
+        }
+
+        /* ============================================
+           Header / Navigation (与HOME完全一致)
+        ============================================ */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .site-header.scrolled {
+            background: rgba(15, 20, 25, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .site-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .site-logo span {
+            color: var(--danger-red);
+        }
+
+        .site-nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .site-nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .site-nav a:hover {
+            color: white;
+        }
+
+        .site-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--danger-red);
+            transition: width 0.3s ease;
+        }
+
+        .site-nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ============================================
+           Hero Section (深色背景，与HOME一致)
+        ============================================ */
+        .hero-section {
+            background: var(--dark-bg);
+            color: var(--text-light);
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(249, 115, 22, 0.1) 0%, transparent 50%);
+            animation: pulse-bg 8s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes pulse-bg {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        .hero-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-section h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-section h1 .text-danger {
+            color: var(--danger-red);
+            display: inline-block;
+            animation: glow-red 2s ease-in-out infinite;
+        }
+
+        @keyframes glow-red {
+            0%, 100% { text-shadow: 0 0 10px rgba(220, 38, 38, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(220, 38, 38, 0.8), 0 0 30px rgba(220, 38, 38, 0.4); }
+        }
+
+        .hero-section p {
+            font-size: 1.3rem;
+            text-align: center;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* ============================================
+           Content Section
+        ============================================ */
+        .content-section {
+            background: var(--dark-secondary);
+            color: var(--text-light);
+            padding: 4rem 2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        /* ============================================
+           Contact Form
+        ============================================ */
+        .contact-form-wrapper {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            padding: 2.5rem;
+            border-radius: 16px;
+        }
+
+        .contact-form-wrapper h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            font-family: var(--font-system);
+            font-size: 1rem;
+            color: white;
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--danger-red);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .form-group select option {
+            background: var(--dark-bg);
+            color: white;
+        }
+
+        .submit-btn {
+            background: var(--gradient-danger);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(220, 38, 38, 0.4);
+        }
+
+        .form-message {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            display: none;
+        }
+
+        .form-message.success {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success-green);
+            border: 2px solid var(--success-green);
+            display: block;
+        }
+
+        /* ============================================
+           Contact Info Cards
+        ============================================ */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(220, 38, 38, 0.5);
+            transform: translateY(-5px);
+        }
+
+        .info-card h3 {
+            color: var(--danger-red);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .info-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .info-card a {
+            color: var(--danger-red);
+            text-decoration: none;
+        }
+
+        .info-card a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        /* ============================================
+           FAQ Section
+        ============================================ */
+        .faq-section {
+            margin-top: 4rem;
+            background: rgba(220, 38, 38, 0.05);
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            padding: 3rem 2rem;
+            border-radius: 16px;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: white;
+            font-size: 2.5rem;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+        }
+
+        .faq-item h4 {
+            color: var(--danger-red);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .faq-item p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* ============================================
+           Footer (与HOME完全一致)
+        ============================================ */
+        .site-footer {
+            background: var(--dark-bg);
+            color: var(--text-light);
+            padding: 3rem 0 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--danger-red);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            opacity: 1;
+        }
+
+        .footer-section p {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ============================================
+           Responsive Design
+        ============================================ */
+        @media (max-width: 768px) {
+            .site-nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(15, 20, 25, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                transform: translateY(-200%);
+                transition: transform 0.3s ease;
+            }
+
+            .site-nav.active {
+                transform: translateY(0);
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+    <div class="header-container">
+        <a href="preview-english.html" class="site-logo">
+            <span>🛡️</span> Security Review
+        </a>
+        
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            ☰
+        </button>
+        
+        <nav class="site-nav">
+            <a href="preview-english.html#threats">Security Threats</a>
+            <a href="preview-english.html#solution">Solutions</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <h1><span class="text-danger">Contact Us</span></h1>
+    <p>Have questions? We're here to help. Get in touch with our team.</p>
+</section>
+
+<!-- Content Section -->
+<section class="content-section">
+    <div class="container">
+        
+        <div class="contact-container">
+            <!-- Contact Form -->
+            <div class="contact-form-wrapper">
+                <h2>Send Us a Message</h2>
+                
+                <div class="form-message success" id="formMessage" style="display: none;">
+                    ✅ Thank you! Your message has been received. We'll get back to you soon.
+                </div>
+                
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="john@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a topic...</option>
+                            <option value="General Inquiry">General Inquiry</option>
+                            <option value="Product Question">Product Question</option>
+                            <option value="Review Request">Review Request</option>
+                            <option value="Partnership">Partnership Opportunity</option>
+                            <option value="Technical Support">Technical Support</option>
+                            <option value="Feedback">Feedback</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message *</label>
+                        <textarea id="message" name="message" required placeholder="Tell us how we can help you..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message →</button>
+                </form>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <div class="info-card">
+                    <h3>📧 Email Us</h3>
+                    <div class="contact-item">
+                        <span class="contact-icon">💼</span>
+                        <div>
+                            <strong style="color: white;">General Inquiries:</strong><br>
+                            <a href="mailto:support@example.com">support@example.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">🤝</span>
+                        <div>
+                            <strong style="color: white;">Partnership:</strong><br>
+                            <a href="mailto:partners@example.com">partners@example.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3>⏰ Response Time</h3>
+                    <p>
+                        We typically respond to all inquiries within <strong style="color: var(--danger-red);">24-48 hours</strong> during business days. 
+                        For urgent security-related questions, please mark your message as "high priority."
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h3>🌐 Connect With Us</h3>
+                    <p>
+                        Follow us on social media for the latest security news, product updates, and cybersecurity tips.
+                    </p>
+                    <div style="margin-top: 1rem; display: flex; gap: 1rem; font-size: 1.5rem;">
+                        <a href="#" style="text-decoration: none; opacity: 0.8; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">📘</a>
+                        <a href="#" style="text-decoration: none; opacity: 0.8; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">🐦</a>
+                        <a href="#" style="text-decoration: none; opacity: 0.8; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">💼</a>
+                        <a href="#" style="text-decoration: none; opacity: 0.8; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">📺</a>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3>💬 Live Chat</h3>
+                    <p>
+                        Our live chat support is available <strong style="color: var(--danger-red);">Monday through Friday, 9 AM - 6 PM EST</strong>. 
+                        Click the chat icon in the bottom right corner to start a conversation.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h2>Frequently Asked <span style="color: var(--danger-red);">Questions</span></h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>How do I choose the right security software?</h4>
+                    <p>Check our detailed comparison tables and reviews. We break down features, pricing, and performance to help you make an informed decision.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Are your reviews unbiased?</h4>
+                    <p>Yes! While we earn commissions from affiliate links, all reviews are based on hands-on testing and honest evaluation of each product.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Can you review a specific product?</h4>
+                    <p>We're always looking to expand our reviews. Send us a request using the form above, and we'll consider it for future coverage.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Do you offer technical support?</h4>
+                    <p>We provide guidance on choosing security software, but for technical issues with specific products, please contact the vendor directly.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>How often do you update reviews?</h4>
+                    <p>We regularly update our reviews to reflect new features, pricing changes, and emerging threats in the cybersecurity landscape.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Can I partner with you?</h4>
+                    <p>Yes! We welcome partnership inquiries. Please use the contact form above and select "Partnership Opportunity" as the subject.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <!-- About Section -->
+            <div class="footer-section">
+                <h3>About</h3>
+                <p>
+                    We are dedicated to providing professional, objective cybersecurity product reviews 
+                    and recommendations to help you protect your privacy and data security.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="preview-english.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="preview-english.html#threats">Security Threats</a></li>
+                </ul>
+            </div>
+
+            <!-- Legal -->
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="privacy-policy.html">Terms of Service</a></li>
+                    <li><a href="privacy-policy.html">Affiliate Disclosure</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 Security Review. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile Menu Toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const siteNav = document.querySelector('.site-nav');
+        
+        if (menuToggle && siteNav) {
+            menuToggle.addEventListener('click', function() {
+                siteNav.classList.toggle('active');
+                this.textContent = siteNav.classList.contains('active') ? '✕' : '☰';
+            });
+
+            // Close menu when clicking on a link
+            document.querySelectorAll('.site-nav a').forEach(link => {
+                link.addEventListener('click', function() {
+                    siteNav.classList.remove('active');
+                    if (menuToggle) menuToggle.textContent = '☰';
+                });
+            });
+        }
+
+        // Header scroll effect
+        const header = document.querySelector('.site-header');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    });
+
+    // Form submission handler
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Show success message
+        document.getElementById('formMessage').style.display = 'block';
+        
+        // Reset form
+        this.reset();
+        
+        // Scroll to message
+        document.getElementById('formMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        // Hide message after 5 seconds
+        setTimeout(() => {
+            document.getElementById('formMessage').style.display = 'none';
+        }, 5000);
+    });
+</script>
+
+</body>
+</html>

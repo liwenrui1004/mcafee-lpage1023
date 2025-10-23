@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about our mission to provide honest, comprehensive security software reviews and recommendations.">
+    <title>About Us | McAfee Security Reviews</title>
+    
+    <style>
+        /* ============================================
+           CSS Variables System (与HOME完全一致)
+        ============================================ */
+        :root {
+            /* Anxiety Colors */
+            --danger-red: #dc2626;
+            --danger-dark: #991b1b;
+            --warning-orange: #f97316;
+            --dark-bg: #0f1419;
+            --dark-secondary: #1a1f2e;
+            
+            /* Hope Colors */
+            --success-green: #10b981;
+            --primary-blue: #2563eb;
+            --light-bg: #f8fafc;
+            --light-secondary: #f1f5f9;
+            
+            /* Neutral Colors */
+            --text-dark: #1e293b;
+            --text-light: #e2e8f0;
+            --text-muted: #64748b;
+            
+            /* Gradients */
+            --gradient-danger: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            --gradient-primary: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            
+            /* Other Colors */
+            --secondary-color: #1a1f2e;
+            
+            /* Fonts */
+            --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        /* ============================================
+           Global Reset
+        ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-system);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 70px;
+        }
+
+        /* ============================================
+           Header / Navigation (与HOME完全一致)
+        ============================================ */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .site-header.scrolled {
+            background: rgba(15, 20, 25, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .site-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .site-logo span {
+            color: var(--danger-red);
+        }
+
+        .site-nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .site-nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .site-nav a:hover {
+            color: white;
+        }
+
+        .site-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--danger-red);
+            transition: width 0.3s ease;
+        }
+
+        .site-nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ============================================
+           Hero Section (深色背景，与HOME一致)
+        ============================================ */
+        .hero-section {
+            background: var(--dark-bg);
+            color: var(--text-light);
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(249, 115, 22, 0.1) 0%, transparent 50%);
+            animation: pulse-bg 8s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes pulse-bg {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        .hero-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-section h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-section h1 .text-danger {
+            color: var(--danger-red);
+            display: inline-block;
+            animation: glow-red 2s ease-in-out infinite;
+        }
+
+        @keyframes glow-red {
+            0%, 100% { text-shadow: 0 0 10px rgba(220, 38, 38, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(220, 38, 38, 0.8), 0 0 30px rgba(220, 38, 38, 0.4); }
+        }
+
+        .hero-section p {
+            font-size: 1.3rem;
+            text-align: center;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* ============================================
+           Content Section
+        ============================================ */
+        .content-section {
+            background: var(--dark-secondary);
+            color: var(--text-light);
+            padding: 4rem 2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .intro-text {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .text-danger-title {
+            color: var(--danger-red);
+        }
+
+        /* ============================================
+           Feature Cards (与HOME的威胁卡片样式一致)
+        ============================================ */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--danger-red);
+            box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--danger-red);
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: var(--text-light);
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        /* ============================================
+           Values Section
+        ============================================ */
+        .values-section {
+            background: rgba(220, 38, 38, 0.05);
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+            border-radius: 16px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .value-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--success-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .value-text {
+            color: var(--text-light);
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        /* ============================================
+           CTA Box
+        ============================================ */
+        .cta-box {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 3rem;
+            background: rgba(220, 38, 38, 0.1);
+            border: 2px solid var(--danger-red);
+            border-radius: 16px;
+        }
+
+        .cta-box h2 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .cta-box p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.25rem 3rem;
+            background: var(--gradient-danger);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(220, 38, 38, 0.4);
+        }
+
+        /* ============================================
+           Footer (与HOME完全一致)
+        ============================================ */
+        .site-footer {
+            background: var(--dark-bg);
+            color: var(--text-light);
+            padding: 3rem 0 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--danger-red);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            opacity: 1;
+        }
+
+        .footer-section p {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ============================================
+           Responsive Design
+        ============================================ */
+        @media (max-width: 768px) {
+            .site-nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(15, 20, 25, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                transform: translateY(-200%);
+                transition: transform 0.3s ease;
+            }
+
+            .site-nav.active {
+                transform: translateY(0);
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .features-grid,
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+    <div class="header-container">
+        <a href="preview-english.html" class="site-logo">
+            <span>🛡️</span> Security Review
+        </a>
+        
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            ☰
+        </button>
+        
+        <nav class="site-nav">
+            <a href="preview-english.html#threats">Security Threats</a>
+            <a href="preview-english.html#solution">Solutions</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <h1><span class="text-danger">About Us</span></h1>
+    <p>Dedicated to protecting your digital life through honest, comprehensive security reviews</p>
+</section>
+
+<!-- Content Section -->
+<section class="content-section">
+    <div class="container">
+        
+        <div class="intro-text">
+            <p>
+                In today's digital age, cybersecurity is not a luxury—it's a necessity. We are a team of 
+                cybersecurity professionals, researchers, and tech enthusiasts committed to helping you make 
+                informed decisions about protecting your devices, data, and privacy.
+            </p>
+        </div>
+
+        <h2 class="section-title">
+            Our <span class="text-danger-title">Mission</span>
+        </h2>
+        
+        <div class="intro-text">
+            <p>
+                Our mission is simple: <strong style="color: var(--danger-red);">to empower users with the knowledge and tools they need to stay 
+                safe online</strong>. We believe everyone deserves access to trustworthy information about 
+                security software, without the confusion of technical jargon or hidden agendas.
+            </p>
+        </div>
+
+        <!-- Features Grid -->
+        <h2 class="section-title" style="margin-top: 4rem;">
+            What <span class="text-danger-title">We Do</span>
+        </h2>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3 class="feature-title">In-Depth Reviews</h3>
+                <p class="feature-description">
+                    We rigorously test every security product in real-world scenarios, evaluating protection, 
+                    performance, features, and value for money.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⚖️</div>
+                <h3 class="feature-title">Expert Comparisons</h3>
+                <p class="feature-description">
+                    Our side-by-side comparisons help you understand the differences between products, 
+                    making it easier to choose the right solution.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <h3 class="feature-title">Educational Content</h3>
+                <p class="feature-description">
+                    We provide guides, tutorials, and articles to help you understand cybersecurity threats 
+                    and how to protect yourself.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3 class="feature-title">Continuous Updates</h3>
+                <p class="feature-description">
+                    The cybersecurity landscape evolves rapidly. We regularly update our reviews to reflect 
+                    the latest features and threat protection.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3 class="feature-title">Unbiased Approach</h3>
+                <p class="feature-description">
+                    While we earn commissions from affiliate links, our reviews are based solely on hands-on 
+                    testing and objective evaluation.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3 class="feature-title">Community Focus</h3>
+                <p class="feature-description">
+                    We listen to our readers' feedback and questions, continuously improving our content to 
+                    serve you better.
+                </p>
+            </div>
+        </div>
+
+        <!-- Values Section -->
+        <div class="values-section">
+            <h2 class="section-title">Our Core <span class="text-danger-title">Values</span></h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <div class="value-icon">🔓</div>
+                    <h3 class="value-title">Transparency</h3>
+                    <p class="value-text">
+                        We clearly disclose our affiliate relationships and maintain editorial independence.
+                    </p>
+                </div>
+
+                <div class="value-item">
+                    <div class="value-icon">⭐</div>
+                    <h3 class="value-title">Excellence</h3>
+                    <p class="value-text">
+                        We strive for accuracy, depth, and quality in every review and recommendation.
+                    </p>
+                </div>
+
+                <div class="value-item">
+                    <div class="value-icon">🤝</div>
+                    <h3 class="value-title">Trust</h3>
+                    <p class="value-text">
+                        Your trust is our most valuable asset. We earn it through honesty and integrity.
+                    </p>
+                </div>
+
+                <div class="value-item">
+                    <div class="value-icon">💡</div>
+                    <h3 class="value-title">Innovation</h3>
+                    <p class="value-text">
+                        We continuously improve our testing methodology and content presentation.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-box">
+            <h2>Have Questions?</h2>
+            <p>
+                We'd love to hear from you. Whether you need help choosing a security solution or have 
+                feedback about our content, we're here to help.
+            </p>
+            <a href="contact.html" class="cta-button">
+                Contact Us →
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <!-- About Section -->
+            <div class="footer-section">
+                <h3>About</h3>
+                <p>
+                    We are dedicated to providing professional, objective cybersecurity product reviews 
+                    and recommendations to help you protect your privacy and data security.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="preview-english.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="preview-english.html#threats">Security Threats</a></li>
+                </ul>
+            </div>
+
+            <!-- Legal -->
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="privacy-policy.html">Terms of Service</a></li>
+                    <li><a href="privacy-policy.html">Affiliate Disclosure</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 Security Review. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile Menu Toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const siteNav = document.querySelector('.site-nav');
+        
+        if (menuToggle && siteNav) {
+            menuToggle.addEventListener('click', function() {
+                siteNav.classList.toggle('active');
+                this.textContent = siteNav.classList.contains('active') ? '✕' : '☰';
+            });
+
+            // Close menu when clicking on a link
+            document.querySelectorAll('.site-nav a').forEach(link => {
+                link.addEventListener('click', function() {
+                    siteNav.classList.remove('active');
+                    if (menuToggle) menuToggle.textContent = '☰';
+                });
+            });
+        }
+
+        // Header scroll effect
+        const header = document.querySelector('.site-header');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -4,7 +4,6 @@ components/
 lib/
 types/
 pages/
-public/
 node_modules/
 .next/
 out/
@@ -18,6 +17,7 @@ tsconfig.json
 tailwind.config.js
 postcss.config.js
 package-lock.json
+package.json
 
 # Development files
 scripts/
@@ -27,7 +27,6 @@ strapi-config/
 
 # Documentation files
 *.md
-!README.md
 
 # Other
 netlify.toml
@@ -35,4 +34,7 @@ netlify.toml
 *.sh
 *.bat
 env.example
+
+# Root HTML files (we use public/ directory instead)
+/*.html
 
